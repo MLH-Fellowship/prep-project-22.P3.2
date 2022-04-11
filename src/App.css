@@ -21,8 +21,8 @@ input {
 
 .Results {
   background-color: white;
-  margin-left: 150px;
-  margin-right: 150px;
+  margin: 0 auto;
+  width: 60%;
   margin-top: 20px;
   border-radius: 8px;
   color: black;
@@ -30,3 +30,15 @@ input {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+/* Media Queries for results card responsiveness */
+@media screen and (max-width:1024px) {
+  .Results {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .Results {
+    width: 80%;
+  }
+}
