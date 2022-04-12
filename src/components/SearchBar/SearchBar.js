@@ -3,7 +3,7 @@ import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { cities } from "./data/cities";
 import PropTypes from "prop-types";
 import "./css/SearchBar.css";
- 
+
 const createCityObjects = (() => {
   // Array in which our city objects will be stored.
   let cityObjects = [];

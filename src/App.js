@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
-import {REACT_APP_API_KEY} from './example.js'
 
 function App() {
   const [error, setError] = useState(null);
@@ -11,9 +10,16 @@ function App() {
   const [results, setResults] = useState(null);
 
   useEffect(() => {
-    console.log(REACT_APP_API_KEY)
     fetch(
+<<<<<<< HEAD
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+=======
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        city +
+        "&units=metric" +
+        "&appid=" +
+        process.env.REACT_APP_APIKEY
+>>>>>>> Revert "Fixed the issue"
     )
       .then((res) => res.json())
       .then(
