@@ -36,10 +36,8 @@ Make sure the following checks are completed before making the PR ready for revi
 
 ## Issues this closes 
 
-> This will link the PR to the relevant issue so merging the PR with automatically close the issue. Also, it helps others discover which issues have open PRs. Note: Don't change any of the wording in the line below or it won't work.
+> This will link the PR to the relevant issue so merging the PR with automatically close the issue. Also, it helps others discover which issues have open PRs. 
 
-This closes #`issue number`
+This closes `add issue link`. 
 
 > Check out this [PR](https://github.com/marcnjaramillo/prep-project-22.P3.2/pull/1) for an example.
-
-**Note:** This feature might not work with #`issue number` so you might want to try `MLH-Fellowship#issue number`
