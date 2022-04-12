@@ -15,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css)\"",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +36,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "printWidth": 90,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "semi": true,
+    "tabWidth": 2,
+    "singleQuote": false
+  },
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "prettier": "^2.6.2"
   }
 }
