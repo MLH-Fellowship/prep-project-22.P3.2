@@ -1,14 +1,35 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
+
+import { geolocationWeather } from "./geolocation";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("New York City");
+  const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
+    async function getWeatherFromGeoLocation() {
+      const locationResponse = await geolocationWeather();
+      if (locationResponse instanceof Error) {
+        setError(locationResponse);
+      } else {
+        setIsLoaded(true);
+        setCity(locationResponse.cityName);
+        setResults(locationResponse.weatherResponse);
+      }
+    }
+    getWeatherFromGeoLocation();
+  }, []);
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
     )
