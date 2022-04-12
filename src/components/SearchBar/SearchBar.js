@@ -4,7 +4,7 @@ import { cities } from "./data/cities";
 import PropTypes from "prop-types";
 import "./css/SearchBar.css";
 
-const cityObjects = (() => {
+const createCityObjects = (() => {
   // Array in which our city objects will be stored.
   let cityObjects = [];
   let index = 0;
@@ -21,18 +21,13 @@ const cityObjects = (() => {
     index++;
   });
 
-  console.log(cityObjects);
-
   return cityObjects;
 })();
 
 const SearchBar = ({ setCity }) => {
-  const handleOnSearch = (string, results) => {
-    setCity(string);
-  };
-
-  const handleOnSelect = (string) => {
-    setCity(string);
+  // Callback for when a city is selected.
+  const handleOnSelect = (object) => {
+    setCity(object.name);
   };
 
   return (
@@ -42,9 +37,8 @@ const SearchBar = ({ setCity }) => {
           keys: ["name"],
         }}
         resultStringKeyName="name"
-        items={[...cityObjects]}
-        handleOnSearch={handleOnSearch}
-        handleOnSelect={handleOnSelect}
+        items={[...createCityObjects]}
+        onSelect={handleOnSelect}
       />
     </div>
   );
