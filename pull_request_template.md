@@ -3,6 +3,8 @@ This is the pull request template that will show up when you're opening a PR. Yo
 
 as well before submitting. 
 
+**Important Note:** Before submitting your PR, make sure the base file is [Marc's fork - marcnjaramillo/prep-project-22.P3.2](https://github.com/marcnjaramillo/prep-project-22.P3.2) and not the main project ([MLH-Fellowship/prep-project-22.P3.2](https://github.com/MLH-Fellowship/prep-project-22.P3.2)). 
+
 ## Why this PR is important 
 
 *Why did you submit this PR? What are its benefits? - Use Issue Description as inspiration*
@@ -26,7 +28,8 @@ Make sure the following checks are completed before making the PR ready for revi
 
 - [] My Pod Leader knows I'm working on this Pull Request
 - [] I've explained what the Pull Request is adding.
-- []  I've explained why this is important.
+- [] I've explained why this is important.
+- [] I am making a PR with `marcnjaramillo/prep-project-22.P3.2` and not `MLH-Fellowshipprep-project-22.P3.2`. 
 
 ## Contributors 
 *Mention the people who have worked on this issue. Also, use it as a space for giving shoutouts to people.*
