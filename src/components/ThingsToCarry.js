@@ -1,10 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const ThingsToCarry = () => {
-  return (
-    <>
-    </>
-  );
-}
+  return <></>;
+};
 
 export default ThingsToCarry;
