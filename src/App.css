@@ -1,7 +1,7 @@
 body {
-    background-color: #133667;
-    color: white;
-    text-align: center;
+  background-color: #133667;
+  color: white;
+  text-align: center;
 }
 
 .logo {
@@ -16,7 +16,7 @@ input {
   padding: 10px;
   border-radius: 4px;
   border: 10px;
-  width: 200px
+  width: 200px;
 }
 
 .Results {
@@ -27,17 +27,23 @@ input {
   border-radius: 8px;
   color: black;
   padding: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 /* Media Queries for results card responsiveness */
-@media screen and (max-width:1024px) {
+
+@media screen and (min-width: 1024px) and (max-width: 1080px) {
   .Results {
-    width: 70%;
+    width: 80%;
   }
 }
 
-@media screen and (max-width:800px) {
+@media screen and (min-width: 801px) and (max-width: 1023px) {
+  .Results {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 800px) {
   .Results {
     width: 80%;
   }
