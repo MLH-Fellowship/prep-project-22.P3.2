@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import classes from "./HourlyForecast.module.css";
 import Carousel from "react-elastic-carousel";
+import SearchInputs from "./SearchInputs";
 
 const Card = ({ text }) => {
   return <div className={classes.card}>{text}</div>;
@@ -14,6 +15,8 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
     { width: 1200, itemsToShow: recordsPerPage },
   ];
 
+  const carouselRef = useRef(null);
+
   const onChangeItems = (pageIndex) => {
     let startIndex = pageIndex * recordsPerPage;
     let endIndex = startIndex + recordsPerPage;
@@ -26,9 +29,15 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
     setShowHours({ ...updatedShowHours });
   };
 
+  const onSelectTime = () => {
+    console.log(carouselRef);
+  };
+
   return (
     <div className={classes.cardsContainer}>
+      {/* <SearchInputs list={results.list} /> */}
       <Carousel
+        ref={carouselRef}
         itemsToScroll={5}
         breakPoints={breakPoints}
         onChange={(_, pageIndex) => {
