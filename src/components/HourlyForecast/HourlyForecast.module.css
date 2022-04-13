@@ -1,0 +1,28 @@
+.container {
+  width: 80%;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.container h1 {
+  color: #000;
+  margin-top: 20px;
+}
+
+.contentContainer{
+  width: 90%;
+  height: 80%;
+}
+
+.error h3{
+  color: #bf3e3e;
+  color: rgb(131, 156, 192);
+}
