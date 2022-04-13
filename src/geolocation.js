@@ -12,9 +12,10 @@ const getLocation = () => {
         };
         try {
           const cityName = await axios.get(
-            `https://us1.locationiq.com/v1/reverse.php?key=pk.${process.env.REACT_APP_GEOLOCATION}8&lat=${response.latitude}&lon=${response.longitude}&format=json`
+            `http://api.openweathermap.org/geo/1.0/reverse?lat=${response.latitude}&lon=${response.longitude}&limit=1&appid=${process.env.REACT_APP_APIKEY}`
           );
-          response.cityName = cityName.data.address.state_district;
+          console.log(cityName);
+          response.cityName = cityName.data[0].name;
           resolve(response);
         } catch (err) {
           reject(new Error(err.message));
