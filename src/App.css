@@ -19,6 +19,12 @@ input {
   width: 200px;
 }
 
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .Results {
   background-color: white;
   margin: 0 auto;

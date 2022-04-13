@@ -1,0 +1,16 @@
+.carousel-container {
+  width: 50%;
+  height: 250px;
+}
+
+.carousel-container h2 {
+  padding: 15px 0 -5px 0;
+}
+
+#__next {
+  padding: 20px;
+}
+
+.image-item {
+  padding: 20px 0 20px 20px;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import ThingsToCarry from "./components/ThingsToCarry";
 import logo from "./mlh-prep.png";
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
             )}
           </div>
         </div>
+        <ThingsToCarry weatherType={results && results.weather[0].main} />
       </>
     );
   }
