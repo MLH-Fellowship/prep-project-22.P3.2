@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./mlh-prep.png";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+require("dotenv").config();
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City");
   const [results, setResults] = useState(null);
+  const position = [51.505, -0.09];
 
   useEffect(() => {
     fetch(
@@ -58,6 +62,22 @@ function App() {
             )}
           </div>
         </div>
+        <MapContainer
+          center={position}
+          zoom={13}
+          scrollWheelZoom={false}
+          className="leaflet-container"
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={position}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
       </>
     );
   }
