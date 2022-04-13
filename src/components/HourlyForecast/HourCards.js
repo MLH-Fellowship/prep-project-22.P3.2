@@ -2,9 +2,16 @@ import React, { useRef, useEffect } from "react";
 import classes from "./HourlyForecast.module.css";
 import Carousel from "react-elastic-carousel";
 import SearchInputs from "./SearchInputs";
+import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
 
-const Card = ({ text }) => {
-  return <div className={classes.card}>{text}</div>;
+const Card = ({ text, day, time }) => {
+  return (
+    <div className={classes.card}>
+      <h1>{day}</h1>
+      <p>{time}</p>
+      {text}
+    </div>
+  );
 };
 
 const HourCards = ({ results, setShowHours, recordsPerPage }) => {
@@ -17,8 +24,9 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
 
   const carouselRef = useRef(null);
 
-  const onChangeItems = (pageIndex) => {
-    let startIndex = pageIndex * recordsPerPage;
+  const onChangeItems = (el) => {
+    const { index: itemIndex } = el;
+    let startIndex = itemIndex;
     let endIndex = startIndex + recordsPerPage;
 
     const updatedShowHours = {
@@ -29,23 +37,24 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
     setShowHours({ ...updatedShowHours });
   };
 
-  const onSelectTime = () => {
-    console.log(carouselRef);
+  const onSelectTime = (selectedTime) => {
+    let elIndex = results.list.findIndex((el) => `${el.dt}` === selectedTime);
+    carouselRef.current.goTo(Number(elIndex));
   };
 
   return (
     <div className={classes.cardsContainer}>
-      {/* <SearchInputs list={results.list} /> */}
+      <SearchInputs list={results.list} onSelectTime={onSelectTime} />
       <Carousel
         ref={carouselRef}
         itemsToScroll={5}
         breakPoints={breakPoints}
-        onChange={(_, pageIndex) => {
-          onChangeItems(pageIndex);
+        onChange={(el) => {
+          onChangeItems(el);
         }}
       >
         {results.list.map((el, id) => (
-          <Card text={id} />
+          <Card key={el.dt} text={id} day={getDayStr(el.dt)} time={getTimeStr(el.dt)} />
         ))}
       </Carousel>
     </div>
