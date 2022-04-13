@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 import logo from "./mlh-prep.png";
 
 function App() {
@@ -11,11 +10,7 @@ function App() {
 
   useEffect(() => {
     fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city +
-        "&units=metric" +
-        "&appid=" +
-        process.env.REACT_APP_APIKEY
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
     )
       .then((res) => res.json())
       .then(
@@ -49,6 +44,7 @@ function App() {
           />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
+            {console.log(results)}
             {isLoaded && results && (
               <>
                 <h3>{results.weather[0].main}</h3>
@@ -61,8 +57,6 @@ function App() {
               </>
             )}
           </div>
-
-          <HourlyForecast city={city} />
         </div>
       </>
     );
