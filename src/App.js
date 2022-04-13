@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 import logo from "./mlh-prep.png";
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
               </>
             )}
           </div>
+          <HourlyForecast city={city} />
         </div>
       </>
     );

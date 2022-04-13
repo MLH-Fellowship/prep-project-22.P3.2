@@ -22,7 +22,10 @@
   height: 80%;
 }
 
+.contentContainer h3{
+  color: #333;
+}
+
 .error h3{
   color: #bf3e3e;
-  color: rgb(131, 156, 192);
 }

@@ -30,9 +30,6 @@ const HourlyForecast = ({ city }) => {
           setShowHours({ start: 0, end: recordsPerPage });
           setIsLoaded(true);
         }
-        setData(result);
-        setShowHours({ start: 0, end: recordsPerPage });
-        setIsLoaded(true);
       })
       .catch((err) => {
         setError(`${err}`);
@@ -65,21 +62,21 @@ const HourlyForecast = ({ city }) => {
   return (
     <div className={classes.container}>
       <h1>Hourly Forecast</h1>
-      {/* <button onClick={onShowNextItems}>Go Forward</button>
-      <button onClick={onShowPrevItems}>Go Backwards</button> */}
+      <button onClick={onShowNextItems}>Go Forward</button>
+      <button onClick={onShowPrevItems}>Go Backwards</button>
       {error ? (
         <div className={classes.error}>
           <h3>{error}</h3>
         </div>
       ) : (
         <div className={classes.contentContainer}>
-          {!isLoaded ? (
-            <h3>Loading</h3>
-          ) : (
+          {isLoaded ? (
             <>
               <HourCards />
               <LineChart results={data} showHours={showHours} />
             </>
+          ) : (
+            <h3>Loading...</h3>
           )}
         </div>
       )}
