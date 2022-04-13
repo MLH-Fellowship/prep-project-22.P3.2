@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./App.css";
+import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
 
 import { geolocationWeather } from "./geolocation";
@@ -7,7 +8,7 @@ import { geolocationWeather } from "./geolocation";
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(null);
   const [results, setResults] = useState(null);
   const firstUpdate = useRef(true);
 
@@ -58,11 +59,7 @@ function App() {
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
-          <input
-            type="text"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
+          <SearchBar setCity={setCity} />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {console.log(results)}
