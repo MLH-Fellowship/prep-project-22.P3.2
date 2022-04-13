@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import ThingsToCarry from "./components/ThingsToCarry";
 import logo from "./mlh-prep.png";
+import dotenv from 'dotenv';
+
+import data from './components/data.json';
+
+dotenv.config();
 
 function App() {
   const [error, setError] = useState(null);
