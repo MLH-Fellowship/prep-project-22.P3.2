@@ -11,15 +11,7 @@ function App() {
 
   useEffect(() => {
     fetch(
-<<<<<<< HEAD
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
-=======
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-        city +
-        "&units=metric" +
-        "&appid=" +
-        process.env.REACT_APP_APIKEY
->>>>>>> Revert "Fixed the issue"
     )
       .then((res) => res.json())
       .then(
