@@ -22,7 +22,6 @@ const HourlyForecast = ({ city }) => {
       .then((res) => res.json())
       .then((result) => {
         if (result.cod !== "200") {
-          console.log(result);
           setIsLoaded(false);
           setError(result.message);
         } else {
@@ -34,36 +33,11 @@ const HourlyForecast = ({ city }) => {
       .catch((err) => {
         setError(`${err}`);
       });
-  }, [city]);
-
-  const onShowNextItems = () => {
-    const { start, end } = showHours;
-    if (end < data.list?.length) {
-      const updatedShowHours = {
-        start: start + recordsPerPage,
-        end: end + recordsPerPage,
-      };
-      setShowHours({ ...updatedShowHours });
-    }
-  };
-
-  const onShowPrevItems = () => {
-    const { start, end } = showHours;
-    console.log(start, end);
-    if (start > 0 && start !== 0) {
-      const updatedShowHours = {
-        start: start - recordsPerPage,
-        end: end - recordsPerPage,
-      };
-      setShowHours({ ...updatedShowHours });
-    }
-  };
+  }, [city, recordsPerPage]);
 
   return (
     <div className={classes.container}>
       <h1>Hourly Forecast</h1>
-      <button onClick={onShowNextItems}>Go Forward</button>
-      <button onClick={onShowPrevItems}>Go Backwards</button>
       {error ? (
         <div className={classes.error}>
           <h3>{error}</h3>
@@ -72,7 +46,12 @@ const HourlyForecast = ({ city }) => {
         <div className={classes.contentContainer}>
           {isLoaded ? (
             <>
-              <HourCards />
+              <HourCards
+                setShowHours={setShowHours}
+                recordsPerPage={recordsPerPage}
+                results={data}
+                showHours={showHours}
+              />
               <LineChart results={data} showHours={showHours} />
             </>
           ) : (
@@ -84,5 +63,4 @@ const HourlyForecast = ({ city }) => {
   );
 };
 
-//https://www.youtube.com/watch?v=eBKcGAhkZUI
 export default HourlyForecast;

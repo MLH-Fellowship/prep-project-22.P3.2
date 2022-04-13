@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./HourlyForecast.module.css";
 
 // eslint-disable-next-line no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
@@ -8,7 +9,6 @@ const LineChart = ({ results, showHours }) => {
   const timestamps = [];
   const tempratures = [];
   const { start, end } = showHours;
-  console.log(showHours);
 
   const generateDateSets = () => {
     results.list.slice(start, end).forEach((forecast, index) => {
@@ -53,7 +53,11 @@ const LineChart = ({ results, showHours }) => {
     },
     maintainAspectRatio: false,
   };
-  return <Line data={data} options={options} />;
+  return (
+    <div className={classes.chartContainer}>
+      <Line data={data} options={options} />
+    </div>
+  );
 };
 
 export default LineChart;
