@@ -11,11 +11,10 @@ const getLocation = () => {
           err: null,
         };
         try {
-          const weatherResponse = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${response.latitude}&lon=${response.longitude}&appid=${process.env.REACT_APP_APIKEY}`
+          const cityName = await axios.get(
+            `https://us1.locationiq.com/v1/reverse.php?key=pk.${process.env.REACT_APP_GEOLOCATION}8&lat=${response.latitude}&lon=${response.longitude}&format=json`
           );
-          response.weatherResult = weatherResponse.data;
-          response.cityName = weatherResponse.data.name;
+          response.cityName = cityName.data.address.state_district;
           resolve(response);
         } catch (err) {
           reject(new Error(err.message));
@@ -28,7 +27,7 @@ const getLocation = () => {
   });
 };
 
-export const geolocationWeather = async () => {
+export const geolocation = async () => {
   const response = await getLocation();
   return response;
 };

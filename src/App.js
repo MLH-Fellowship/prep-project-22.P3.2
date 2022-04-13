@@ -3,27 +3,25 @@ import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
 
-import { geolocationWeather } from "./geolocation";
+import { geolocation } from "./geolocation";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
   const firstUpdate = useRef(true);
 
   useEffect(() => {
-    async function getWeatherFromGeoLocation() {
-      const locationResponse = await geolocationWeather();
+    async function getLocation() {
+      const locationResponse = await geolocation();
       if (locationResponse instanceof Error) {
         setError(locationResponse);
       } else {
-        setIsLoaded(true);
         setCity(locationResponse.cityName);
-        setResults(locationResponse.weatherResponse);
       }
     }
-    getWeatherFromGeoLocation();
+    getLocation();
   }, []);
 
   useEffect(() => {
