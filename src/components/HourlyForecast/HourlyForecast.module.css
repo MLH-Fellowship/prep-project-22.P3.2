@@ -47,6 +47,20 @@
   border-radius:10px;
 }
 
+.card h2{
+  margin-top:10px;
+  margin-bottom: 0;
+}
+
+.card img{
+  marginTop: 3px;
+  marginBottom: 1px;
+}
+
+.card h5{
+  margin: 0;
+}
+
 .inputContainer {
   display: flex;
   justify-content: flex-end;

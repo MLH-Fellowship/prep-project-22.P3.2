@@ -7,10 +7,10 @@ import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
 const Card = ({ day, time, temp, icon }) => {
   return (
     <div className={classes.card}>
-      <h2 style={{marginTop:"10px",marginBottom: "0"}}>{day}</h2>
-        <h5 style={{margin: "8px"}}>{temp}</h5>
-      <h5 style={{margin: "0"}}>{time}</h5>
-      <img src = {`http://openweathermap.org/img/w/${icon}.png`} />
+      <h2>{day}</h2>
+      <img src = {`http://openweathermap.org/img/w/${icon}.png`} /> 
+        <h5 >{temp}&#176; C</h5>
+      <h5>{time}</h5>
 
 </div>
   );
