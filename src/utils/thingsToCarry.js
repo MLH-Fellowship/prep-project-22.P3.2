@@ -1,15 +1,54 @@
-export const getImagesOfThingsToCarry = (weatherType) => {
-  switch (weatherType) {
-    case "":
-      return [];
+import thingsToCarryData from "../data/thingsToCarry.json";
 
-    default:
-      return [
-        "https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-        "https://images.unsplash.com/photo-1550133730-695473e544be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "https://images.unsplash.com/photo-1550167164-1b67c2be3973?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-        "https://images.unsplash.com/photo-1550338861-b7cfeaf8ffd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-      ];
+export const getImagesOfThingsToCarry = (weatherType) => {
+  if (weatherType === "Rain") {
+    return [
+      thingsToCarryData[0],
+      thingsToCarryData[1],
+      thingsToCarryData[2],
+      thingsToCarryData[3],
+      thingsToCarryData[4],
+      thingsToCarryData[6],
+    ];
+  } else if (weatherType === "Clouds" || weatherType === "Drizzle") {
+    return [
+      thingsToCarryData[0],
+      thingsToCarryData[6],
+      thingsToCarryData[4],
+      thingsToCarryData[3],
+    ];
+  } else if (weatherType === "Snow") {
+    return [
+      thingsToCarryData[16],
+      thingsToCarryData[9],
+      thingsToCarryData[15],
+      thingsToCarryData[13],
+      thingsToCarryData[8],
+    ];
+  } else if (weatherType === "Clear") {
+    return [
+      thingsToCarryData[14],
+      thingsToCarryData[10],
+      thingsToCarryData[7],
+      thingsToCarryData[12],
+      thingsToCarryData[11],
+    ];
+  } else if (
+    weatherType === "Mist" ||
+    weatherType === "Smoke" ||
+    weatherType === "Haze" ||
+    weatherType === "Fog" ||
+    weatherType === "Dust" ||
+    weatherType === "Ash"
+  ) {
+    return [thingsToCarryData[19], thingsToCarryData[6], thingsToCarryData[17]];
+  } else if (
+    weatherType === "Thunderstorm" ||
+    weatherType === "Tornado" ||
+    weatherType === "Squall"
+  ) {
+    return [thingsToCarryData[18], thingsToCarryData[17], thingsToCarryData[20]];
+  } else {
+    return [];
   }
 };
