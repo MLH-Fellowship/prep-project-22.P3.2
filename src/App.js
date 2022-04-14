@@ -3,7 +3,7 @@ import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
 
-import { geolocation } from "./geolocation";
+import { geolocation } from "./api/geolocation";
 
 function App() {
   const [error, setError] = useState(null);
