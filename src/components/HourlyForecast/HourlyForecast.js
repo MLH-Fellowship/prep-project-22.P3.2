@@ -26,6 +26,7 @@ const HourlyForecast = ({ city }) => {
           setError(result.message);
         } else {
           setData(result);
+          console.log(result,"hi");
           setShowHours({ start: 0, end: recordsPerPage });
           setIsLoaded(true);
         }
@@ -34,6 +35,7 @@ const HourlyForecast = ({ city }) => {
         setError(`${err}`);
       });
   }, [city, recordsPerPage]);
+
 
   return (
     <div className={classes.container}>
@@ -54,6 +56,7 @@ const HourlyForecast = ({ city }) => {
               />
               <LineChart results={data} showHours={showHours} />
             </>
+
           ) : (
             <h3>Loading...</h3>
           )}

@@ -4,13 +4,15 @@ import Carousel from "react-elastic-carousel";
 import SearchInputs from "./SearchInputs";
 import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
 
-const Card = ({ day, time, temp }) => {
+const Card = ({ day, time, temp, icon }) => {
   return (
     <div className={classes.card}>
-      <h1>{temp}</h1>
-      <h1>{day}</h1>
-      <p>{time}</p>
-    </div>
+      <h2 style={{marginTop:"10px",marginBottom: "0"}}>{day}</h2>
+        <h5 style={{margin: "8px"}}>{temp}</h5>
+      <h5 style={{margin: "0"}}>{time}</h5>
+      <img src = {`http://openweathermap.org/img/w/${icon}.png`} />
+
+</div>
   );
 };
 
@@ -59,6 +61,7 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
             day={getDayStr(el.dt)}
             time={getTimeStr(el.dt)}
             temp={el.main.temp}
+            icon={el.weather[0].icon}
           />
         ))}
       </Carousel>

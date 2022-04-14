@@ -41,9 +41,10 @@
 }
 
 .card {
-  height: 100px;
+  height: 130px;
   width: 150px;
-  background-color: green;
+  background-color: #0f90fe;
+  border-radius:10px;
 }
 
 .inputContainer {
