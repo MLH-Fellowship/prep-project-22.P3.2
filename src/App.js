@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
+import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("New York City");
+  const [city, setCity] = useState(null);
   const [results, setResults] = useState(null);
 
   useEffect(() => {
@@ -38,11 +39,7 @@ function App() {
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
           <h2>Enter a city below 👇</h2>
-          <input
-            type="text"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
+          <SearchBar setCity={setCity} />
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {console.log(results)}
