@@ -1,5 +1,5 @@
 .container {
-  width: 80%;
+  width: 70%;
   height: min-content;
   background-color: #fff;
   border-radius: 8px;
@@ -14,10 +14,11 @@
 .container h1 {
   color: #000;
   margin-top: 20px;
+  font-weight: 600;
 }
 
 .contentContainer {
-  width: 90%;
+  width: 95%;
   height: 80%;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .chartContainer {
-  height: 400px;
+  height: 350px;
 }
 
 .card {
@@ -45,7 +46,25 @@
   background-color: green;
 }
 
-@media screen and (max-width: 800px) {
+.inputContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+.inputContainer select {
+  background-color: transparent;
+  border: none;
+  color: #1e59ac;
+  border: 2px solid rgb(131, 156, 192, 0.3);
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+}
+.inputContainer select:nth-child(2) {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 801px) {
   .container {
     width: 90%;
   }

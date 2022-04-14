@@ -4,12 +4,12 @@ import Carousel from "react-elastic-carousel";
 import SearchInputs from "./SearchInputs";
 import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
 
-const Card = ({ text, day, time }) => {
+const Card = ({ day, time, temp }) => {
   return (
     <div className={classes.card}>
+      <h1>{temp}</h1>
       <h1>{day}</h1>
       <p>{time}</p>
-      {text}
     </div>
   );
 };
@@ -47,14 +47,19 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
       <SearchInputs list={results.list} onSelectTime={onSelectTime} />
       <Carousel
         ref={carouselRef}
-        itemsToScroll={5}
+        itemsToScroll={recordsPerPage}
         breakPoints={breakPoints}
         onChange={(el) => {
           onChangeItems(el);
         }}
       >
         {results.list.map((el, id) => (
-          <Card key={el.dt} text={id} day={getDayStr(el.dt)} time={getTimeStr(el.dt)} />
+          <Card
+            key={el.dt}
+            day={getDayStr(el.dt)}
+            time={getTimeStr(el.dt)}
+            temp={el.main.temp}
+          />
         ))}
       </Carousel>
     </div>
