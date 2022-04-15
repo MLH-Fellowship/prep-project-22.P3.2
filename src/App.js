@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./App.css";
 import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
@@ -7,13 +7,32 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+import { geolocation } from "./api/geolocation";
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
+    async function getLocation() {
+      const locationResponse = await geolocation();
+      if (locationResponse instanceof Error) {
+        setError(locationResponse);
+      } else {
+        setCity(locationResponse.cityName);
+      }
+    }
+    getLocation();
+  }, []);
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
     )
