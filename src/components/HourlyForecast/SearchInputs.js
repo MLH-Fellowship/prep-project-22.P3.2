@@ -38,7 +38,7 @@ const SearchInputs = ({ list, onSelectTime }) => {
       <select onChange={(e) => getTimeOptions(e.target.value)}>
         {/* dayoptions are empty on first render */}
         {dayOptions &&
-          Object.keys(dayOptions).map((el, i) => (
+          Object.keys(dayOptions).map((el) => (
             <option key={el} value={el}>
               {el}
             </option>

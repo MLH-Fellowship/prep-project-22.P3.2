@@ -54,7 +54,7 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
           onChangeItems(el);
         }}
       >
-        {results.list.map((el, id) => (
+        {results.list.map((el) => (
           <Card
             key={el.dt}
             day={getDayStr(el.dt)}

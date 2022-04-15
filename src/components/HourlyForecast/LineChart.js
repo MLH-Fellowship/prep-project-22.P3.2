@@ -12,7 +12,7 @@ const LineChart = ({ results, showHours }) => {
   const { start, end } = showHours;
 
   const generateDateSets = () => {
-    results.list.slice(start, end).forEach((forecast, index) => {
+    results.list.slice(start, end).forEach((forecast) => {
       let timeStr = getTimeStr(forecast.dt);
       timestamps.push(timeStr);
       tempratures.push(forecast.main.temp);
