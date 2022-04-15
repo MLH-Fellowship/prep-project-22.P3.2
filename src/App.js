@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import "./App.css";
+import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { geolocation } from "./api/geolocation";
@@ -76,6 +77,7 @@ function App() {
               </>
             )}
           </div>
+          <HourlyForecast city={city} />
         </div>
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
