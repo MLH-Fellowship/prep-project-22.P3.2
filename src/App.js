@@ -2,12 +2,11 @@ import { useRef, useEffect, useState } from "react";
 import "./App.css";
 import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
+import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-import { geolocation } from "./api/geolocation";
 
 function App() {
   const [error, setError] = useState(null);
