@@ -9,7 +9,7 @@ function Login() {
     const { login } = useAuth();
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate
+    const navigate = useNavigate();
 
 
     async function handleSubmit(e) {
@@ -19,10 +19,10 @@ function Login() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            navigate.push("/")
+            navigate("/")
 
         } catch {
-            setError("Failed to log")
+            setError("Failed to log in")
         }
 
         setLoading(false)
@@ -33,7 +33,7 @@ function Login() {
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Log in</h2>
-                    {error && <Alert variant="dange r">{error}</Alert>}
+                    {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
