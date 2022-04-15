@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, useMapEvents, MapConsumer } from "react-leaflet";
+import { MapContainer, TileLayer, MapConsumer } from "react-leaflet";
 import L from "leaflet";
 import icon from "./constants";
 import LocationMarker from "./LocationMarker";
-import App from "./App";
 require("dotenv").config();
 
 var popup = L.popup();
@@ -11,7 +10,6 @@ var popup = L.popup();
 // function onMapClick(e) {}
 
 const Map = ({ weather }) => {
-  const [results, setResults] = useState(null);
   const [latLng, setLatLng] = useState([19.0144, 72.8479]); // default location of map
 
   useEffect(() => {
@@ -22,7 +20,12 @@ const Map = ({ weather }) => {
   }, [weather]);
 
   return (
-    <MapContainer center={latLng} zoom={9} scrollWheelZoom={false}>
+    <MapContainer
+      center={latLng}
+      zoom={9}
+      scrollWheelZoom={false}
+      className="leaflet-container"
+    >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -51,7 +54,8 @@ const Map = ({ weather }) => {
                   popup.setContent(
                     data.weather.map((w) => w.description).join(", ") +
                       " " +
-                      data.main.temp
+                      data.main.temp +
+                      "°C"
                   );
                 });
             });
