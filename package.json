@@ -8,8 +8,10 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-multi-carousel": "^2.8.0",
     "react-scripts": "4.0.3",
     "react-search-autocomplete": "^6.1.1",
     "web-vitals": "^1.0.1"
@@ -19,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"**/*.+(js|jsx|json|css)\"",
+    "format": "lint-staged",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -40,6 +42,12 @@
       "last 1 safari version"
     ]
   },
+  "lint-staged": {
+    "*.+(js|jsx|json|css)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "prettier": {
     "printWidth": 90,
     "bracketSpacing": true,
@@ -50,6 +58,7 @@
   },
   "devDependencies": {
     "husky": "^7.0.0",
+    "lint-staged": "^12.3.7",
     "prettier": "^2.6.2"
   }
 }
