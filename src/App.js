@@ -5,7 +5,11 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaf
 import Map from "./Map";
 import Leaflet from "leaflet";
 // import { Marker, Popup, useMap } from "react-leaflet";
-require("dotenv").config();
+import dotenv from "dotenv";
+
+dotenv.config();
+
+import { geolocation } from "./api/geolocation";
 
 function App() {
   // const [position, setPosition] = [51.505, -0.09];
