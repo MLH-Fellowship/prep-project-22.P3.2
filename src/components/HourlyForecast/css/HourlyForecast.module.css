@@ -1,5 +1,5 @@
 .container {
-  width: 70%;
+  width: 60%;
   height: min-content;
   background-color: #fff;
   border-radius: 8px;
@@ -13,7 +13,7 @@
 
 .container h1 {
   color: #000;
-  margin-top: 20px;
+  margin-top: 10px;
   font-weight: 600;
 }
 
@@ -22,8 +22,8 @@
   height: 80%;
 }
 
-.contentContainer h3 {
-  color: #333;
+.contentContainer h2 {
+  color: #000;
 }
 
 .error h3 {
@@ -38,26 +38,23 @@
 
 .chartContainer {
   height: 350px;
+  margin-top: 40px;
 }
 
 .card {
-  height: 130px;
-  width: 150px;
+  height: 140px;
+  width: 100px;
   background-color: #0f90fe;
-  border-radius:10px;
+  border-radius: 10px;
 }
 
-.card h2{
-  margin-top:10px;
+.card h2 {
+  margin-top: 10px;
   margin-bottom: 0;
+  color: #fff;
 }
 
-.card img{
-  marginTop: 3px;
-  marginBottom: 1px;
-}
-
-.card h5{
+.card h5 {
   margin: 0;
 }
 
@@ -79,8 +76,21 @@
   margin-left: 10px;
 }
 
-@media screen and (max-width: 801px) {
+@media screen and (max-width: 900px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .container {
     width: 90%;
+  }
+  .card {
+    width: 70px;
+  }
+
+  .card h2 {
+    font-size: 18px;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import classes from "./HourlyForecast.module.css";
+import classes from "./css/HourlyForecast.module.css";
 
 import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
 
@@ -14,7 +14,7 @@ const SearchInputs = ({ list, onSelectTime }) => {
       return null;
     });
     setDayOptions(updatedOptions);
-    getTimeOptions("Today");
+    getTimeOptions(getDayStr(list[0].dt));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [list]);
 

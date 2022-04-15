@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./HourlyForecast.module.css";
+import classes from "./css/HourlyForecast.module.css";
 
 // eslint-disable-next-line no-unused-vars
 import { Chart as ChartJS } from "chart.js/auto";
@@ -24,11 +24,11 @@ const LineChart = ({ results, showHours }) => {
     labels: [...timestamps],
     datasets: [
       {
-        label: "Temperature in Celsius",
+        label: "Temperature",
         data: [...tempratures],
-        fill: false,
-        backgroundColor: "#1e59ac",
-        borderColor: "rgb(131, 156, 192, .3)",
+        backgroundColor: "rgb(15, 144, 254, .3)",
+        borderColor: "#1e59ac",
+        fill: true,
       },
     ],
   };

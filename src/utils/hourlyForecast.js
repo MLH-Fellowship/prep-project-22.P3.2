@@ -9,11 +9,7 @@ export function getDayStr(time) {
     6: "Sat",
   };
 
-  let today = new Date();
   let forecastDate = new Date(time * 1000);
-  if (forecastDate.getDate() === today.getDate()) {
-    return "Today";
-  }
   return weekDays[forecastDate.getDay()];
 }
 

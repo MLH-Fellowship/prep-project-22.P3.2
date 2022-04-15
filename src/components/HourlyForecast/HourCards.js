@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import classes from "./HourlyForecast.module.css";
+import React, { useRef } from "react";
+import classes from "./css/HourlyForecast.module.css";
 import Carousel from "react-elastic-carousel";
 import SearchInputs from "./SearchInputs";
 import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
@@ -8,11 +8,10 @@ const Card = ({ day, time, temp, icon }) => {
   return (
     <div className={classes.card}>
       <h2>{day}</h2>
-      <img src = {`http://openweathermap.org/img/w/${icon}.png`} /> 
-        <h5 >{temp}&#176; C</h5>
+      <img alt="weather" src={`http://openweathermap.org/img/w/${icon}.png`} />
+      <h5>{temp}&#176; C</h5>
       <h5>{time}</h5>
-
-</div>
+    </div>
   );
 };
 

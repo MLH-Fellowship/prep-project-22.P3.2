@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HourCards from "./HourCards";
-import classes from "./HourlyForecast.module.css";
+import classes from "./css/HourlyForecast.module.css";
 import LineChart from "./LineChart";
 
 const HourlyForecast = ({ city }) => {
@@ -8,34 +8,52 @@ const HourlyForecast = ({ city }) => {
   const [error, setError] = useState(false);
   const [data, setData] = useState(false);
   const [showHours, setShowHours] = useState({});
-  let recordsPerPage = 5;
+  const [recordsPerPage, setRecordsPerPage] = useState(5);
 
   useEffect(() => {
     setIsLoaded(false);
-    fetch(
-      "https://api.openweathermap.org/data/2.5/forecast?q=" +
-        city +
-        "&units=metric" +
-        "&appid=" +
-        process.env.REACT_APP_APIKEY
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.cod !== "200") {
-          setIsLoaded(false);
-          setError(result.message);
-        } else {
-          setData(result);
-          console.log(result,"hi");
-          setShowHours({ start: 0, end: recordsPerPage });
-          setIsLoaded(true);
-        }
-      })
-      .catch((err) => {
-        setError(`${err}`);
-      });
-  }, [city, recordsPerPage]);
+    if (city) {
+      fetch(
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+          city +
+          "&units=metric" +
+          "&appid=" +
+          process.env.REACT_APP_APIKEY
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.cod !== "200") {
+            setIsLoaded(false);
+            setError(result.message);
+          } else {
+            setData(result);
+            setShowHours({ start: 0, end: recordsPerPage });
+            setIsLoaded(true);
+          }
+        })
+        .catch((err) => {
+          setError(`${err}`);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [city]);
 
+  //to change the records in carousel according to window width
+  useEffect(() => {
+    function handlePageChanged() {
+      if (window.innerWidth < 900 && recordsPerPage !== 3) {
+        setRecordsPerPage(3);
+      } else if (window.innerWidth > 900 && recordsPerPage !== 5) {
+        setRecordsPerPage(5);
+      }
+    }
+    window.addEventListener("load", handlePageChanged);
+    window.addEventListener("resize", handlePageChanged);
+    return () => {
+      window.removeEventListener("resize", handlePageChanged);
+      window.removeEventListener("load", handlePageChanged);
+    };
+  });
 
   return (
     <div className={classes.container}>
@@ -56,9 +74,8 @@ const HourlyForecast = ({ city }) => {
               />
               <LineChart results={data} showHours={showHours} />
             </>
-
           ) : (
-            <h3>Loading...</h3>
+            <h2>Loading...</h2>
           )}
         </div>
       )}
