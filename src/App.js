@@ -1,17 +1,83 @@
-import { useEffect, useState } from "react";
+import { useCallback, useMemo, useRef, useState, useEffect } from "react";
+import { createGlobalState } from "react-hooks-global-state";
 import "./App.css";
 import logo from "./mlh-prep.png";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import Map from "./Map";
-
+import Leaflet from "leaflet";
+// import { Marker, Popup, useMap } from "react-leaflet";
 require("dotenv").config();
 
-function App() {
+const center = {
+  lat: 51.505,
+  lng: -0.09,
+};
+
+// let globalCity = new GlobalState(0);
+
+function DraggableMarker(props) {
+  const [draggable, setDraggable] = useState(false);
+  const [position, setPosition] = useState(center);
+  const [city, setCity] = useState(null);
+  const markerRef = useRef(null);
+  const eventHandlers = useMemo(
+    () => ({
+      dragend() {
+        const marker = markerRef.current;
+        if (marker != null) {
+          setPosition(marker.getLatLng());
+          setCity("Delhi");
+        }
+      },
+    }),
+    []
+  );
+  const toggleDraggable = useCallback(() => {
+    setDraggable((d) => !d);
+  }, []);
+
+  return (
+    <Marker
+      draggable={draggable}
+      eventHandlers={eventHandlers}
+      position={position}
+      ref={markerRef}
+    >
+      <Popup minWidth={90}>
+        <span onClick={toggleDraggable}>
+          {draggable ? "Marker is draggable" : "Click here to make marker draggable"}
+        </span>
+      </Popup>
+    </Marker>
+  );
+}
+
+function LocationMarker() {
+  const [position, setPosition] = useState(null);
+  const map = useMapEvents({
+    click() {
+      map.locate();
+    },
+    locationfound(e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, map.getZoom());
+    },
+  });
+
+  return position === null ? null : (
+    <Marker position={position}>
+      <Popup>You are here</Popup>
+    </Marker>
+  );
+}
+
+function App(props) {
+  // const [position, setPosition] = [51.505, -0.09];
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City");
+  // const [city, setCity] = useState(city);
   const [results, setResults] = useState(null);
-  const [position, setPosition] = [51.505, -0.09];
 
   useEffect(() => {
     fetch(
@@ -60,27 +126,17 @@ function App() {
                   </p>
                 </i>
                 <Map weather={results} />
-                {/* {this.results.lat != null && this.results.lon != null && (
-                  <MapContainer
-                    center={results}
-                    zoom={13}
-                    scrollWheelZoom={false}
-                    className="leaflet-container"
-                  >
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker lat={results.lat} lng={results.lon}>
-                      <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                      </Popup>
-                    </Marker>
-                  </MapContainer>
-                )} */}
               </>
             )}
           </div>
+          {/* <MapContainer center={{ lat: 51.505, lng: -0.09 }} zoom={13}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+             <LocationMarker /> 
+            <DraggableMarker />
+          </MapContainer> */}
         </div>
       </>
     );
