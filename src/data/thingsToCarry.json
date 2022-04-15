@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Umbrella",
+    "path": "./images/umbrella.png"
+  },
+  {
+    "name": "Gumboots",
+    "path": "./images/gumboots.png"
+  },
+  {
+    "name": "Raincoat",
+    "path": "./images/raincoat.png"
+  },
+  {
+    "name": "Mosquito Repellant",
+    "path": "./images/mosquito-repellant.png"
+  },
+  {
+    "name": "Small Towels",
+    "path": "./images/towels.png"
+  },
+  {
+    "name": "Tissue Papers",
+    "path": "./images/tissue-paper.png"
+  },
+  {
+    "name": "Flashlight",
+    "path": "./images/torch.png"
+  },
+  {
+    "name": "Cap",
+    "path": "./images/cap.png"
+  },
+  {
+    "name": "Coat",
+    "path": "./images/coat.png"
+  },
+  {
+    "name": "Gloves",
+    "path": "./images/gloves.png"
+  },
+  {
+    "name": "Sunscreen",
+    "path": "./images/sunscreen.png"
+  },
+  {
+    "name": "Hat",
+    "path": "./images/hat.png"
+  },
+  {
+    "name": "Running Shoes",
+    "path": "./images/running-shoes.png"
+  },
+  {
+    "name": "Socks",
+    "path": "./images/socks.png"
+  },
+  {
+    "name": "Sunglasses",
+    "path": "./images/sunglasses.png"
+  },
+  {
+    "name": "Sweater",
+    "path": "./images/sweater.png"
+  },
+  {
+    "name": "Winter Cap",
+    "path": "./images/winter-cap.png"
+  },
+  {
+    "name": "Emergency Kit",
+    "path": "./images/emergency-kit.png"
+  },
+  {
+    "name": "It's recommended to stay indoors during this type of weather",
+    "path": "./images/stay-at-home.png"
+  },
+  {
+    "name": "Mask",
+    "path": "./images/mask.png"
+  },
+  {
+    "name": "Cellphone",
+    "path": "./images/cell-phone.png"
+  }
+]
