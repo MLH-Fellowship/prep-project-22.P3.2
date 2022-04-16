@@ -36,7 +36,7 @@ const Map = ({ weather }) => {
           {
             map.on("click", function (e) {
               const { lat, lng } = e.latlng;
-              L.marker([lat, lng], { icon }).addTo(map);
+              Leaflet.marker([lat, lng], { icon }).addTo(map);
               popup.setLatLng(e.latlng).setContent("Fetching weather info").openOn(map);
 
               fetch(
