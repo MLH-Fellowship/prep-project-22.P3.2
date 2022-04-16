@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, MapConsumer } from "react-leaflet";
 import Leaflet from "leaflet";
 import icon from "../utils/constants";
