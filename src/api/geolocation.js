@@ -12,7 +12,7 @@ const getLocation = () => {
         };
         try {
           const cityName = await axios.get(
-            `http://api.openweathermap.org/geo/1.0/reverse?lat=${response.latitude}&lon=${response.longitude}&limit=1&appid=${process.env.REACT_APP_APIKEY}`
+            `https://api.openweathermap.org/geo/1.0/reverse?lat=${response.latitude}&lon=${response.longitude}&limit=1&appid=${process.env.REACT_APP_APIKEY}`
           );
           response.cityName = cityName.data[0].name;
           resolve(response);
