@@ -1,7 +1,9 @@
 import React from "react";
 import "./App.css";
+import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
+import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import Map from "./components/Map";
@@ -9,8 +11,6 @@ import Leaflet from "leaflet";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-import { geolocation } from "./api/geolocation";
 
 function App() {
   // const [position, setPosition] = [51.505, -0.09];
@@ -82,6 +82,7 @@ function App() {
               </>
             )}
           </div>
+          <HourlyForecast city={city} />
         </div>
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
