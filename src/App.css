@@ -64,3 +64,9 @@ input {
   align-self: center;
   /* margin-left: 150px; */
 }
+
+@media screen and (max-width: 481px) {
+  .rec.rec-dot {
+    display: none;
+  }
+}
