@@ -1,6 +1,6 @@
-import L from "leaflet";
+import Leaflet from "leaflet";
 
-const icon = L.icon({
+const icon = Leaflet.icon({
   iconSize: [25, 41],
   iconAnchor: [10, 41],
   popupAnchor: [2, -40],

@@ -1,11 +1,10 @@
-
-import { useRef, useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
-import Map from "./Map";
+import Map from "./components/Map";
 import Leaflet from "leaflet";
 import dotenv from "dotenv";
 

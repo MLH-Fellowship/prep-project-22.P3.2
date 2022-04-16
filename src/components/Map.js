@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { MapContainer, TileLayer, MapConsumer } from "react-leaflet";
-import L from "leaflet";
-import icon from "./constants";
+import Leaflet from "leaflet";
+import icon from "../utils/constants";
 import LocationMarker from "./LocationMarker";
 require("dotenv").config();
 
-var popup = L.popup();
+var popup = Leaflet.popup();
 
 // function onMapClick(e) {}
 
