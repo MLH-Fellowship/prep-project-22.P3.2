@@ -19,6 +19,12 @@ input {
   width: 200px;
 }
 
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .Results {
   background-color: white;
   margin: 0 auto;
@@ -28,6 +34,48 @@ input {
   color: black;
   padding: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* css for hourly carousel */
+.rec.rec-arrow {
+  height: 25px;
+  width: 25px !important;
+  min-width: 25px !important;
+  line-height: 0;
+  font-size: 14px;
+  box-shadow: 0 0 2px 0px #133667;
+  color: #133667;
+  background-color: transparent;
+}
+
+.rec.rec-arrow:focus:enabled {
+  background-color: transparent;
+  color: #133667;
+}
+.rec.rec-arrow:hover:enabled {
+  background-color: #2459a2 !important;
+  color: #fff;
+}
+
+.rec.rec-dot {
+  box-shadow: none;
+  background-color: #cacaca;
+  transition: all 0.1s ease;
+}
+.rec.rec-dot.rec-dot_active {
+  background-color: #2459a2;
+  pointer-events: none;
+  border: none;
+}
+
+.rec.rec-dot:focus {
+  box-shadow: none;
+  background-color: #2459a2;
+}
+
+.rec.rec-dot:hover {
+  box-shadow: none;
+  background-color: rgb(36, 89, 162, 0.5);
 }
 
 /* Media Queries for results card responsiveness */
@@ -46,5 +94,22 @@ input {
 @media screen and (min-width: 481px) and (max-width: 800px) {
   .Results {
     width: 80%;
+  }
+}
+
+
+.leaflet-container {
+  /* width: 100%;
+  height: 100vh;  */
+  /* z-index: 1; */
+  width: 810px;
+  height: 500px;
+  align-self: center;
+  /* margin-left: 150px; */
+}
+
+@media screen and (max-width: 481px) {
+  .rec.rec-dot {
+    display: none;
   }
 }
