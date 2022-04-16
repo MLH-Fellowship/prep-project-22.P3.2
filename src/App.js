@@ -4,10 +4,10 @@ import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import logo from "./mlh-prep.png";
 import dotenv from "dotenv";
+import { geolocation } from "./api/geolocation";
+import sunny from "./sunny.webp";
 
 dotenv.config();
-
-import { geolocation } from "./api/geolocation";
 
 function App() {
   const [error, setError] = useState(null);
@@ -27,6 +27,10 @@ function App() {
     }
     getLocation();
   }, []);
+
+  useEffect(() => {
+    document.body.style.backgroundImage = results?`url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})`:sunny;
+  },[results]);
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -67,12 +71,12 @@ function App() {
             {console.log(results)}
             {isLoaded && results && (
               <>
-                <h3>{results.weather[0].main}</h3>
-                <p>Feels like {results.main.feels_like}°C</p>
+                <h2>{results.weather[0].main}</h2>
+                <h1>Feels like {results.main.feels_like}°C</h1>
                 <i>
-                  <p>
+                  <h2>
                     {results.name}, {results.sys.country}
-                  </p>
+                  </h2>
                 </i>
               </>
             )}
