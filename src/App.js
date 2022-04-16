@@ -1,16 +1,20 @@
-import { useRef, useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import HourlyForecast from "./components/HourlyForecast/HourlyForecast";
 import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
+import Map from "./components/Map";
+import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
 
 dotenv.config();
 
 function App() {
+  // const [position, setPosition] = [51.505, -0.09];
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("");
@@ -79,6 +83,7 @@ function App() {
                     {results.name}, {results.sys.country}
                   </h2>
                 </i>
+                <Map weather={results} />
               </>
             )}
           </div>

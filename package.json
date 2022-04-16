@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-leaflet/core": "^1.0.2",
     "@react-native-community/geolocation": "^2.0.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -10,10 +11,12 @@
     "chart.js": "^3.7.1",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
+    "leaflet": "^1.7.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "^17.0.2",
     "react-elastic-carousel": "^0.11.5",
+
     "react-multi-carousel": "^2.8.0",
     "react-scripts": "4.0.3",
     "react-search-autocomplete": "^6.1.1",
@@ -61,7 +64,7 @@
   },
   "devDependencies": {
     "husky": "^7.0.0",
-    "lint-staged": "^12.3.7",
+    "lint-staged": "^12.3.8",
     "prettier": "^2.6.2"
   }
 }
