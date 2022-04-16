@@ -6,7 +6,6 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
 import dotenv from "dotenv";
-import { geolocation } from "./api/geolocation";
 import sunny from "./sunny.webp";
 
 dotenv.config();
