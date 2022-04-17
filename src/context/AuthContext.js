@@ -7,10 +7,10 @@ export function useAuth() {
 }
 
 
-
 export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true);
+
 
 
 
@@ -24,18 +24,23 @@ export default function AuthProvider({ children }) {
 
     function logout() {
         auth.signOut()
+
     }
     auth.onAuthStateChanged(user => {
         setCurrentUser(user)
+        setLoading(false)
+
     })
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setLoading(false)
             setCurrentUser(user)
+
         })
         return unsubscribe
     }, [])
+
 
     const value = {
         currentUser,
@@ -43,6 +48,7 @@ export default function AuthProvider({ children }) {
         login,
         logout
     }
+
 
     return (
         <div>
