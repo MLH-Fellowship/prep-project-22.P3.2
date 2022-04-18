@@ -34,8 +34,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.backgroundImage = results?`url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})`:sunny;
-  },[results]);
+    document.body.style.backgroundImage = results
+      ? `url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})`
+      : sunny;
+  }, [results]);
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -71,6 +73,7 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <SearchBar setCity={setCity} />
+          {/* shift from here */}
           <div className="Results">
             {!isLoaded && <h2>Loading...</h2>}
             {console.log(results)}
@@ -87,6 +90,8 @@ function App() {
               </>
             )}
           </div>
+          {/* shift from here */}
+          {/* <MainComponent /> */}
           <HourlyForecast city={city} />
         </div>
         {results?.weather?.length && (
