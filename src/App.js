@@ -10,6 +10,7 @@ import Map from "./components/Map";
 import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
+import toggleswitch from "./components/toggleButton/Toggle"
 
 dotenv.config();
 
@@ -88,6 +89,10 @@ function App() {
             )}
           </div>
           <HourlyForecast city={city} />
+        </div>
+        {/* rendering the radio btn for CtoFtoK */}
+        <div className="toggleswitch">
+          <toggleswitch />
         </div>
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
