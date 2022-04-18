@@ -10,6 +10,7 @@ import Map from "./components/Map";
 import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
+import { getWeatherIcon } from "./utils/customIcon";
 
 dotenv.config();
 
@@ -97,6 +98,7 @@ function App() {
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}
+        {getWeatherIcon("hey")}
       </>
     );
   }
