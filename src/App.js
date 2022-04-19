@@ -106,6 +106,7 @@ function App() {
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}
       </>
+
     );
   }
 }
