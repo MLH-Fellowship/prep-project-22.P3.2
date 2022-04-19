@@ -50,10 +50,11 @@
 .descriptionContainer {
   width: max-content;
   margin-left: 50px;
+  max-width: 320px;
 }
-.descriptionContainer div:first-child {
-  max-width: 350px;
-}
+/* .descriptionContainer div:first-child {
+ */
+/* } */
 
 .ranges {
   display: flex;
@@ -105,20 +106,30 @@
 }
 
 /* Media Queries for results card responsiveness */
-
-@media screen and (min-width: 1024px) and (max-width: 1080px) {
+@media screen and (max-width: 1000px) {
   .Results {
-    width: 80%;
+    width: 90%;
+    margin-bottom: 20px;
   }
 }
 
-@media screen and (min-width: 801px) and (max-width: 1023px) {
-  .Results {
-    width: 80%;
+@media screen and (max-width: 700px) {
+  .temperatureComponent {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .iconContainer {
+    margin-left: 0;
+  }
+  .descriptionContainer {
+    margin-left: 0;
+    padding: 0px 10px;
   }
 }
-@media screen and (min-width: 481px) and (max-width: 800px) {
-  .Results {
-    width: 80%;
+
+@media screen and (max-width: 400px) {
+  .descriptionContainer {
+    width: 280px;
   }
 }

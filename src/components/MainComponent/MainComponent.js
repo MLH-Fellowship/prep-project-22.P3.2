@@ -1,11 +1,10 @@
 import React from "react";
 import Map from "../Map";
-import { getIcon, Icon } from "@iconify/react";
+import { Icon } from "@iconify/react";
 
 import classes from "./css/MainComponent.module.css";
 
 const MainComponent = ({ isLoaded, results }) => {
-  console.log(results);
   return (
     <div className={classes.Results}>
       {!isLoaded && <h2>Loading...</h2>}
@@ -16,7 +15,6 @@ const MainComponent = ({ isLoaded, results }) => {
           </h3>
           <div className={classes.temperatureComponent}>
             <div className={classes.iconContainer}>
-              {getIcon()}
               <Icon icon="fxemoji:whitesunsmallcloud" />
               <h3>{results.main.temp} &#176;C</h3>
             </div>
