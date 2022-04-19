@@ -1,31 +1,65 @@
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar";
 import Map from "../Map";
+import { getIcon, Icon } from "@iconify/react";
 
-function MainComponent({ setCity, isLoaded, results }) {
+import classes from "./css/MainComponent.module.css";
+
+const MainComponent = ({ isLoaded, results }) => {
+  console.log(results);
   return (
-    <>
-      <h2>Enter a city below 👇</h2>
-      <SearchBar setCity={setCity} />
-      {/* shift from here */}
-      <div className="Results">
-        {!isLoaded && <h2>Loading...</h2>}
-        {console.log(results)}
-        {isLoaded && results && (
-          <>
-            <h2>{results.weather[0].main}</h2>
-            <h1>Feels like {results.main.feels_like}°C</h1>
-            <i>
-              <h2>
-                {results.name}, {results.sys.country}
-              </h2>
-            </i>
-            <Map weather={results} />
-          </>
-        )}
-      </div>
-    </>
+    <div className={classes.Results}>
+      {!isLoaded && <h2>Loading...</h2>}
+      {isLoaded && results && (
+        <>
+          <h3 className={classes.heading}>
+            {results.name}, {results.sys.country}
+          </h3>
+          <div className={classes.temperatureComponent}>
+            <div className={classes.iconContainer}>
+              {getIcon()}
+              <Icon icon="fxemoji:whitesunsmallcloud" />
+              <h3>{results.main.temp} &#176;C</h3>
+            </div>
+
+            <div className={classes.descriptionContainer}>
+              <div>
+                <div className={classes.ranges}>
+                  <div className={classes.range}>
+                    <h4>Min</h4>
+                    <p>{results.main.temp_min} &#176;C</p>
+                  </div>
+                  <div className={classes.range}>
+                    <h4>Max</h4>
+                    <p>{results.main.temp_max} &#176;C</p>
+                  </div>
+                </div>
+                <p>
+                  {results.weather[0].description} in {results.name} and temperature feels
+                  like {results.main.feels_like}
+                </p>
+              </div>
+
+              <div className={classes.detailsContainer}>
+                <div className={classes.detail}>
+                  <h5>Humidity</h5>
+                  <p>{results.main.humidity} %</p>
+                </div>
+                <div className={classes.detail}>
+                  <h5>Wind Speed</h5>
+                  <p>{results.wind.speed} mt/s</p>
+                </div>
+                <div className={classes.detail}>
+                  <h5>Pressure</h5>
+                  <p>{results.main.pressure} hPa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Map weather={results} />
+        </>
+      )}
+    </div>
   );
-}
+};
 
 export default MainComponent;

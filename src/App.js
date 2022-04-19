@@ -72,9 +72,12 @@ function App() {
       <>
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
-          {/* shift from here */}
-          <MainComponent isLoaded={isLoaded} setCity={setCity} results={results} />
-          <HourlyForecast city={city} />
+          <h2>Enter a city below 👇</h2>
+          <SearchBar setCity={setCity} />
+          <div className="first-container">
+            <MainComponent isLoaded={isLoaded} setCity={setCity} results={results} />
+            <HourlyForecast city={city} />
+          </div>
         </div>
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />

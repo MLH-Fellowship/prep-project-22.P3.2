@@ -57,7 +57,7 @@ const HourlyForecast = ({ city }) => {
 
   return (
     <div className={classes.container}>
-      <h1>Hourly Forecast</h1>
+      <h3>Hourly Forecast</h3>
       {error ? (
         <div className={classes.error}>
           <h3>{error}</h3>
