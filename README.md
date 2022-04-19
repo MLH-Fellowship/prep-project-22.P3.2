@@ -39,7 +39,7 @@ $ git clone https://github.com/MLH-Fellowship/prep-project-22.P3.2.git
 - Disable Google Analytics, no need for that
 - Create a project
 - Go to Authentication tab
-- Click on "Aign in method" and enable the email and password one
+- Click on "Sign in method" and enable the email and password one
 - Hit save
 - Go to project overview
 - Add a web app and register it
