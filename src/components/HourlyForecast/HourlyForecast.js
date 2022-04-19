@@ -3,7 +3,7 @@ import HourCards from "./HourCards";
 import classes from "./css/HourlyForecast.module.css";
 import LineChart from "./LineChart";
 
-const HourlyForecast = ({ city }) => {
+const HourlyForecast = ({ currentUnit, city }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState(false);
@@ -71,8 +71,9 @@ const HourlyForecast = ({ city }) => {
                 recordsPerPage={recordsPerPage}
                 results={data}
                 showHours={showHours}
+                currentUnit={currentUnit}
               />
-              <LineChart results={data} showHours={showHours} />
+              <LineChart currentUnit={currentUnit} results={data} showHours={showHours} />
             </>
           ) : (
             <h2>Loading...</h2>
