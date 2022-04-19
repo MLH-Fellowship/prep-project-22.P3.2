@@ -5,8 +5,9 @@ import classes from "./css/HourlyForecast.module.css";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import { getTimeStr } from "../../utils/hourlyForecast";
+import { tempConversionNoUnit } from "../../utils/unitConversion";
 
-const LineChart = ({ results, showHours }) => {
+const LineChart = ({ currentUnit, results, showHours }) => {
   const timestamps = [];
   const tempratures = [];
   const { start, end } = showHours;
@@ -15,7 +16,7 @@ const LineChart = ({ results, showHours }) => {
     results.list.slice(start, end).forEach((forecast) => {
       let timeStr = getTimeStr(forecast.dt);
       timestamps.push(timeStr);
-      tempratures.push(forecast.main.temp);
+      tempratures.push(tempConversionNoUnit(currentUnit, forecast.main.temp));
     });
   };
   generateDateSets();

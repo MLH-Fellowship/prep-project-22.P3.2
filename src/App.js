@@ -10,6 +10,8 @@ import Map from "./components/Map";
 import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
+import ToggleUnits from "./components/ToggleUnits/Toggle";
+import { tempConversion } from "./utils/unitConversion";
 
 dotenv.config();
 
@@ -20,6 +22,7 @@ function App() {
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
   const firstUpdate = useRef(true);
+  const [currentUnit, setCurrentUnit] = useState("celsius");
 
   useEffect(() => {
     async function getLocation() {
@@ -34,8 +37,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.backgroundImage = results?`url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})`:sunny;
-  },[results]);
+    document.body.style.backgroundImage = results
+      ? `url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})`
+      : sunny;
+  }, [results]);
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -77,7 +82,7 @@ function App() {
             {isLoaded && results && (
               <>
                 <h2>{results.weather[0].main}</h2>
-                <h1>Feels like {results.main.feels_like}°C</h1>
+                <h1>Feels like {tempConversion(currentUnit, results.main.feels_like)}</h1>
                 <i>
                   <h2>
                     {results.name}, {results.sys.country}
@@ -87,7 +92,11 @@ function App() {
               </>
             )}
           </div>
-          <HourlyForecast city={city} />
+          <HourlyForecast currentUnit={currentUnit} city={city} />
+        </div>
+        {/* rendering the radio btn for CtoFtoK */}
+        <div className="toggleswitch">
+          <ToggleUnits currentUnit={currentUnit} setCurrentUnit={setCurrentUnit} />
         </div>
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
