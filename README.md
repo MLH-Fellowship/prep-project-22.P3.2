@@ -7,8 +7,7 @@
 
 # MLH Prep Project 💼
 
-> _**Weather App for all your daily weather needs.**_ 
-
+> _**Weather App for all your daily weather needs.**_
 
 ## Introduction
 
@@ -18,25 +17,42 @@ We're using the [OpenWeather API](https://openweathermap.org/current) to get wea
 
 You'll need to get your own API Key from their website (for free) and add it as an environment variable in a `.env` file. We have a template available as `example.env`.
 
-You'll be using React initially to build this. If you're new to React, check out the [website](https://reactjs.org) for some information on getting started! 
+You'll be using React initially to build this. If you're new to React, check out the [website](https://reactjs.org) for some information on getting started!
 
 ## How to Run 🔧
 
 - [Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) need to be installed globally on your machine.
-- Clone this repository 
+- Clone this repository
+
 ```
 $ git clone https://github.com/MLH-Fellowship/prep-project-22.P3.2.git
 ```
-- You'll need to get your own API Key from [their website](https://openweathermap.org/) and add it as an environment variable in a `.env` file. 
 
-### Installing the dependencies and running the project. 
+- You'll need to get your own API Key from [their website](https://openweathermap.org/) and add it as an environment variable in a `.env` file.
 
+### Setting up Firebase
+
+- Go to [Firebase](https://firebase.google.com/)
+- Press Get Started
+- Add a new project
+- Name it whatever you like and click Continue
+- Disable Google Analytics, no need for that
+- Create a project
+- Go to Authentication tab
+- Click on "Aign in method" and enable the email and password one
+- Hit save
+- Go to project overview
+- Add a web app and register it
+- Take all the keys and save them to a .env.local file
+- Remember that all the keys have to start with `REACT_APP_...`
+
+### Installing the dependencies and running the project.
 
 - Install the dependencies using `npm install`
-- Run the app using `npm start` 
+- Run the app using `npm start`
 - The app will be hosted on http://localhost:3000
 
-You can also run the project using `yarn` instead. To start the project on your machine use following commands: 
+You can also run the project using `yarn` instead. To start the project on your machine use following commands:
 
 ```
 nvm use
@@ -44,11 +60,11 @@ yarn install
 yarn start
 ```
 
-Then open  http://localhost:3000 if it doesn't open automatically. 
+Then open http://localhost:3000 if it doesn't open automatically.
 
 ## Contributors 👥
 
-We are the [MLH Prep Fellowship](https://fellowship.mlh.io/programs/prep) Pod 22.P3.2. You can check out our portfolio [here](https://github.com/MLH-Fellowship/pod-22.P3.2-portfolio). 
+We are the [MLH Prep Fellowship](https://fellowship.mlh.io/programs/prep) Pod 22.P3.2. You can check out our portfolio [here](https://github.com/MLH-Fellowship/pod-22.P3.2-portfolio).
 
 <table>
   <tr>

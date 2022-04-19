@@ -5,7 +5,9 @@ import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import Map from "./components/Map";
+import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
 
@@ -32,8 +34,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.backgroundImage = results?`url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})`:sunny;
-  },[results]);
+    document.body.style.backgroundImage = results ? `url(https://source.unsplash.com/1920x1080/?${results.weather[0].main})` : sunny;
+  }, [results]);
 
   useEffect(() => {
     if (firstUpdate.current) {
@@ -91,7 +93,7 @@ function App() {
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}
       </>
-      
+
     );
   }
 }
