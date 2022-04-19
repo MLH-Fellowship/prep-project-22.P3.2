@@ -10,7 +10,7 @@ import Map from "./components/Map";
 import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
-import { getWeatherIcon } from "./utils/customIcon";
+import MainComponent from "./components/MainComponent/MainComponent";
 
 dotenv.config();
 
@@ -72,33 +72,13 @@ function App() {
       <>
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
-          <h2>Enter a city below 👇</h2>
-          <SearchBar setCity={setCity} />
           {/* shift from here */}
-          <div className="Results">
-            {!isLoaded && <h2>Loading...</h2>}
-            {console.log(results)}
-            {isLoaded && results && (
-              <>
-                <h2>{results.weather[0].main}</h2>
-                <h1>Feels like {results.main.feels_like}°C</h1>
-                <i>
-                  <h2>
-                    {results.name}, {results.sys.country}
-                  </h2>
-                </i>
-                <Map weather={results} />
-              </>
-            )}
-          </div>
-          {/* shift from here */}
-          {/* <MainComponent /> */}
+          <MainComponent isLoaded={isLoaded} setCity={setCity} results={results} />
           <HourlyForecast city={city} />
         </div>
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}
-        {getWeatherIcon("hey")}
       </>
     );
   }
