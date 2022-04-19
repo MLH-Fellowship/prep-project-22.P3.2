@@ -44,6 +44,6 @@ export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
 }
 
 ToggleUnits.propTypes = {
-  results: PropTypes.func.isRequired,
-  setResults: PropTypes.func.isRequired,
+  currentUnit: PropTypes.func.isRequired,
+  setCurrentUnit: PropTypes.func.isRequired,
 };
