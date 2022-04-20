@@ -11,6 +11,8 @@ import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
 import MainComponent from "./components/MainComponent/MainComponent";
+import ToggleUnits from "./components/ToggleUnits/Toggle";
+import { tempConversion } from "./utils/unitConversion";
 
 dotenv.config();
 
@@ -21,6 +23,7 @@ function App() {
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
   const firstUpdate = useRef(true);
+  const [currentUnit, setCurrentUnit] = useState("celsius");
 
   useEffect(() => {
     async function getLocation() {
@@ -65,7 +68,6 @@ function App() {
       );
   }, [city]);
 
-
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
@@ -80,6 +82,7 @@ function App() {
             <HourlyForecast city={city} />
           </div>
         </div>
+
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}

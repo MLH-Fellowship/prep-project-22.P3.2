@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Leaflet from "leaflet";
 import { Marker, Popup, useMap } from "react-leaflet";
+import { tempConversion } from "../utils/unitConversion";
 
 const LocationMarker = ({ weather, latLng }) => {
   //Changing Icons based on weather, There is a slight issue in popup positioning relative to the icon
