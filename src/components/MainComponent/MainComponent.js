@@ -1,5 +1,6 @@
 import React from "react";
 import Map from "../Map";
+import { getWeatherIcon } from "../../utils/customIcon";
 import { Icon } from "@iconify/react";
 
 import classes from "./css/MainComponent.module.css";
@@ -15,7 +16,8 @@ const MainComponent = ({ isLoaded, results }) => {
           </h3>
           <div className={classes.temperatureComponent}>
             <div className={classes.iconContainer}>
-              <Icon icon="fxemoji:whitesunsmallcloud" />
+              {/* <Icon icon="fxemoji:whitesunsmallcloud" /> */}
+              {getWeatherIcon(results.weather[0].main)}
               <h3>{results.main.temp} &#176;C</h3>
             </div>
 

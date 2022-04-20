@@ -65,6 +65,7 @@ function App() {
       );
   }, [city]);
 
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
