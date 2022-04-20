@@ -13,6 +13,7 @@ function Login() {
     const navigate = useNavigate();
 
 
+
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -20,13 +21,13 @@ function Login() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
+            setLoading(false)
             navigate("/profile")
 
         } catch {
             setError("Failed to log in")
         }
 
-        setLoading(false)
     }
 
     return (

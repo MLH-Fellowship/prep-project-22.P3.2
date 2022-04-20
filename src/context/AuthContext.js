@@ -28,7 +28,7 @@ export default function AuthProvider({ children }) {
     }
     auth.onAuthStateChanged(user => {
         setCurrentUser(user)
-        setLoading(false)
+
 
     })
 

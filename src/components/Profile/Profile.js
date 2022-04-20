@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +9,16 @@ export default function Profile() {
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
     const navigate = useNavigate();
+
+    useEffect(
+        function () {
+            console.log(currentUser);
+            if (!currentUser) {
+
+                navigate("/login");
+            }
+        }, []
+    )
 
     async function handleLogout() {
         setError('')
@@ -26,7 +36,8 @@ export default function Profile() {
                 <Card.Body>
                     <h4 className="text-center mb-4">Your profile</h4>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <strong>Email:</strong>{currentUser.email}
+
+                    <strong>Email:</strong>{currentUser && currentUser.email}
 
                 </Card.Body>
 
