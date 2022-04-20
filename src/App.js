@@ -5,12 +5,10 @@ import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
-import Map from "./components/Map";
-import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
 import MainComponent from "./components/MainComponent/MainComponent";
+import CircularProgress from "@mui/material/CircularProgress";
 
 dotenv.config();
 
@@ -75,6 +73,9 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <SearchBar setCity={setCity} />
+
+          {/* <CircularProgress  /> */}
+
           <div className="first-container">
             <MainComponent
               isLoaded={isLoaded}

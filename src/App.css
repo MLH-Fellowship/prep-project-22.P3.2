@@ -32,6 +32,12 @@ input {
   margin-bottom: 100px;
 }
 
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 /* css for hourly carousel */
 .rec.rec-arrow {
   height: 25px;

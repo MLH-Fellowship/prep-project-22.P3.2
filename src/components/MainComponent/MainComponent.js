@@ -59,7 +59,9 @@ const MainComponent = ({ isLoaded, results, currentUnit, setCurrentUnit }) => {
               </div>
             </div>
           </div>
-          <Map weather={results} />
+          <div className={classes.mapContainer}>
+            <Map weather={results} />
+          </div>
         </>
       )}
     </div>
