@@ -3,19 +3,20 @@ import classes from "./css/HourlyForecast.module.css";
 import Carousel from "react-elastic-carousel";
 import SearchInputs from "./SearchInputs";
 import { getDayStr, getTimeStr } from "../../utils/hourlyForecast";
+import { tempConversion } from "../../utils/unitConversion";
 
 const Card = ({ day, time, temp, icon }) => {
   return (
     <div className={classes.card}>
       <h2>{day}</h2>
       <img alt="weather" src={`http://openweathermap.org/img/w/${icon}.png`} />
-      <h5>{temp}&#176; C</h5>
+      <h5>{temp}</h5>
       <h5>{time}</h5>
     </div>
   );
 };
 
-const HourCards = ({ results, setShowHours, recordsPerPage }) => {
+const HourCards = ({ currentUnit, results, setShowHours, recordsPerPage }) => {
   const breakPoints = [
     { width: 1, itemsToShow: recordsPerPage },
     { width: 550, itemsToShow: recordsPerPage },
@@ -59,7 +60,7 @@ const HourCards = ({ results, setShowHours, recordsPerPage }) => {
             key={el.dt}
             day={getDayStr(el.dt)}
             time={getTimeStr(el.dt)}
-            temp={el.main.temp}
+            temp={tempConversion(currentUnit, el.main.temp)}
             icon={el.weather[0].icon}
           />
         ))}
