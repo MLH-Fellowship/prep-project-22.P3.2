@@ -1,0 +1,157 @@
+.Results {
+  width: 40%;
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapContainer {
+  flex: 1;
+  min-height: 300px;
+}
+
+.headingContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 5px 10px 0px 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.temperatureComponent {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.heading {
+  text-align: left;
+  font-size: 25px;
+  color: #333;
+  font-weight: 600;
+  margin: 0;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  justify-content: space-between;
+}
+
+.iconContainer h3 {
+  font-size: 40px;
+  font-weight: 300;
+  margin: 0px;
+}
+
+.iconContainer svg {
+  height: 90px;
+  width: 90px;
+  margin-bottom: 15px;
+}
+
+.descriptionContainer {
+  width: max-content;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.descriptionContainer p {
+  color: #000;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.ranges {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ranges ~ p {
+  margin-top: 10px;
+}
+
+.range {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.range h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(113, 113, 113);
+  margin: 0;
+}
+.range p {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 24px;
+  color: #333;
+}
+
+.detailsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail h5,
+.detail p {
+  margin: 0;
+  text-align: left;
+}
+
+.detail h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Media Queries for results card responsiveness */
+@media screen and (max-width: 1000px) {
+  .Results {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .temperatureComponent {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .iconContainer {
+    margin-left: 0;
+  }
+  .descriptionContainer {
+    margin-left: 0;
+  }
+  .descriptionContainer p {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .descriptionContainer {
+    width: 280px;
+  }
+}
