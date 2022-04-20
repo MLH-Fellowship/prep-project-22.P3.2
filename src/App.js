@@ -81,6 +81,13 @@ function App() {
             {console.log(results)}
             {isLoaded && results && (
               <>
+                {/* rendering the radio btn for CtoFtoK */}
+                <div className="toggleswitch">
+                  <ToggleUnits
+                    currentUnit={currentUnit}
+                    setCurrentUnit={setCurrentUnit}
+                  />
+                </div>
                 <h2>{results.weather[0].main}</h2>
                 <h1>Feels like {tempConversion(currentUnit, results.main.feels_like)}</h1>
                 <i>
@@ -94,14 +101,12 @@ function App() {
           </div>
           <HourlyForecast currentUnit={currentUnit} city={city} />
         </div>
-        {/* rendering the radio btn for CtoFtoK */}
-        <div className="toggleswitch">
-          <ToggleUnits currentUnit={currentUnit} setCurrentUnit={setCurrentUnit} />
-        </div>
+
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}
       </>
+
     );
   }
 }
