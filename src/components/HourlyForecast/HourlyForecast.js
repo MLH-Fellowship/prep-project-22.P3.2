@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import HourCards from "./HourCards";
 import classes from "./css/HourlyForecast.module.css";
 import LineChart from "./LineChart";
+import { CircularProgress } from "@material-ui/core";
 
 const HourlyForecast = ({ currentUnit, city }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -76,7 +77,7 @@ const HourlyForecast = ({ currentUnit, city }) => {
               <LineChart currentUnit={currentUnit} results={data} showHours={showHours} />
             </>
           ) : (
-            <h2>Loading...</h2>
+            <CircularProgress  />
           )}
         </div>
       )}

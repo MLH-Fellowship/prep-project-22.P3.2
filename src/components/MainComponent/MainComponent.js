@@ -7,11 +7,10 @@ import ToggleUnits from "../ToggleUnits/Toggle";
 import classes from "./css/MainComponent.module.css";
 import { tempConversion } from "../../utils/unitConversion";
 
-const MainComponent = ({ isLoaded, results, currentUnit, setCurrentUnit }) => {
+const MainComponent = ({ results, currentUnit, setCurrentUnit }) => {
   return (
     <div className={classes.Results}>
-      {!isLoaded && <h2>Loading...</h2>}
-      {isLoaded && results && (
+      {results && (
         <>
           <div className={classes.headingContainer}>
             <h3 className={classes.heading}>

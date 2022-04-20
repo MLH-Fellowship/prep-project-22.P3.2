@@ -74,17 +74,16 @@ function App() {
           <h2>Enter a city below 👇</h2>
           <SearchBar setCity={setCity} />
 
-          {/* <CircularProgress  /> */}
-
-          <div className="first-container">
+          {isLoaded ? <div className="first-container">
             <MainComponent
-              isLoaded={isLoaded}
               results={results}
               currentUnit={currentUnit}
               setCurrentUnit={setCurrentUnit}
             />
             <HourlyForecast currentUnit={currentUnit} city={city} />
-          </div>
+          </div> : <CircularProgress size = {50} style = {{marginTop: "50px", color: "white"}} />}
+
+          
         </div>
 
         {results?.weather?.length && (
