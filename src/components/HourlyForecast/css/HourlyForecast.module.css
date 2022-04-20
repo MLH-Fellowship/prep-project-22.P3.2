@@ -52,6 +52,7 @@
   height: 140px;
   width: 100px;
   background-color: #0f90fe;
+  /* background-color: #868686; */
   border-radius: 10px;
 }
 
@@ -59,10 +60,14 @@
   margin-top: 10px;
   margin-bottom: 0;
   color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .card h5 {
   margin: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .inputContainer {
@@ -96,5 +101,9 @@
 
   .card h2 {
     font-size: 18px;
+  }
+
+  .container h3 {
+    left: 15px;
   }
 }

@@ -27,8 +27,9 @@ input {
 
 .first-container {
   display: flex;
-  margin-top: 40px;
+  margin-top: 50px;
   justify-content: space-around;
+  margin-bottom: 100px;
 }
 
 /* css for hourly carousel */

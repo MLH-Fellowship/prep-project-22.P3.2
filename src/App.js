@@ -11,8 +11,6 @@ import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
 import MainComponent from "./components/MainComponent/MainComponent";
-import ToggleUnits from "./components/ToggleUnits/Toggle";
-import { tempConversion } from "./utils/unitConversion";
 
 dotenv.config();
 
@@ -78,8 +76,13 @@ function App() {
           <h2>Enter a city below 👇</h2>
           <SearchBar setCity={setCity} />
           <div className="first-container">
-            <MainComponent isLoaded={isLoaded} setCity={setCity} results={results} />
-            <HourlyForecast city={city} />
+            <MainComponent
+              isLoaded={isLoaded}
+              results={results}
+              currentUnit={currentUnit}
+              setCurrentUnit={setCurrentUnit}
+            />
+            <HourlyForecast currentUnit={currentUnit} city={city} />
           </div>
         </div>
 

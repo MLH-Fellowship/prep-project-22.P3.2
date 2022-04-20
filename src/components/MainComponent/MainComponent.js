@@ -2,23 +2,27 @@ import React from "react";
 import Map from "../Map";
 import { getWeatherIcon } from "../../utils/customIcon";
 import { Icon } from "@iconify/react";
+import ToggleUnits from "../ToggleUnits/Toggle";
 
 import classes from "./css/MainComponent.module.css";
+import { tempConversion } from "../../utils/unitConversion";
 
-const MainComponent = ({ isLoaded, results }) => {
+const MainComponent = ({ isLoaded, results, currentUnit, setCurrentUnit }) => {
   return (
     <div className={classes.Results}>
       {!isLoaded && <h2>Loading...</h2>}
       {isLoaded && results && (
         <>
-          <h3 className={classes.heading}>
-            {results.name}, {results.sys.country}
-          </h3>
+          <div className={classes.headingContainer}>
+            <h3 className={classes.heading}>
+              {results.name}, {results.sys.country}
+            </h3>
+            <ToggleUnits currentUnit={currentUnit} setCurrentUnit={setCurrentUnit} />
+          </div>
           <div className={classes.temperatureComponent}>
             <div className={classes.iconContainer}>
-              {/* <Icon icon="fxemoji:whitesunsmallcloud" /> */}
               {getWeatherIcon(results.weather[0].main)}
-              <h3>{results.main.temp} &#176;C</h3>
+              <h3>{tempConversion(currentUnit, results.main.temp)}</h3>
             </div>
 
             <div className={classes.descriptionContainer}>
@@ -26,11 +30,11 @@ const MainComponent = ({ isLoaded, results }) => {
                 <div className={classes.ranges}>
                   <div className={classes.range}>
                     <h4>Min</h4>
-                    <p>{results.main.temp_min} &#176;C</p>
+                    <p>{tempConversion(currentUnit, results.main.temp_min)}</p>
                   </div>
                   <div className={classes.range}>
                     <h4>Max</h4>
-                    <p>{results.main.temp_max} &#176;C</p>
+                    <p>{tempConversion(currentUnit, results.main.temp_max)}</p>
                   </div>
                 </div>
                 <p>

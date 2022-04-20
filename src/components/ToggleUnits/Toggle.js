@@ -7,6 +7,7 @@ import {
   Radio,
   withStyles,
 } from "@material-ui/core";
+import { experimental_sx as sx } from "@mui/system";
 import { indigo } from "@material-ui/core/colors";
 
 export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
@@ -15,12 +16,29 @@ export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
     setCurrentUnit(newUnit);
   };
 
-  const StylisedRadio = withStyles({
-    root: {
-      color: indigo[50],
-    },
-    checked: {},
-  })((props) => <Radio color="default" {...props} />);
+  const StylisedRadio = withStyles(
+    sx({
+      root: {
+        color: "rgb(15, 144, 254, .7)",
+        height: "3px",
+        width: "3px",
+        margin: "0 8px",
+        "& .MuiSvgIcon-root": {
+          height: "20px",
+          width: "20px",
+        },
+      },
+      checked: {},
+    })
+  )((props) => <Radio color="default" {...props} />);
+
+  const StyledLabel = withStyles(
+    sx({
+      root: {
+        margin: { xs: "10px 3px", sm: "10px 15px" },
+      },
+    })
+  )((props) => <FormControlLabel color="default" {...props} />);
 
   return (
     <FormControl component="fieldset">
@@ -31,13 +49,9 @@ export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
         value={currentUnit}
         onChange={handleChange}
       >
-        <FormControlLabel value="celsius" control={<StylisedRadio />} label="Celsius" />
-        <FormControlLabel
-          value="fahrenheit"
-          control={<StylisedRadio />}
-          label="Fahrenheit"
-        />
-        <FormControlLabel value="kelvin" control={<StylisedRadio />} label="Kelvin" />
+        <StyledLabel value="celsius" control={<StylisedRadio />} label="Celsius" />
+        <StyledLabel value="fahrenheit" control={<StylisedRadio />} label="Fahrenheit" />
+        <StyledLabel value="kelvin" control={<StylisedRadio />} label="Kelvin" />
       </RadioGroup>
     </FormControl>
   );
