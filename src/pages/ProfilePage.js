@@ -3,6 +3,7 @@ import Profile from "../components/Profile/Profile";
 import AuthProvider from "../context/AuthContext";
 import { Container } from "react-bootstrap";
 
+
 export default function ProfilePage() {
   return (
     <AuthProvider>
