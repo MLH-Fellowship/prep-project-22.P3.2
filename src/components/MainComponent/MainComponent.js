@@ -1,7 +1,6 @@
 import React from "react";
 import Map from "../Map";
 import { getWeatherIcon } from "../../utils/customIcon";
-import { Icon } from "@iconify/react";
 import ToggleUnits from "../ToggleUnits/Toggle";
 
 import classes from "./css/MainComponent.module.css";

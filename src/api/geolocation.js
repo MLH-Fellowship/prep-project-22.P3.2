@@ -28,6 +28,10 @@ const getLocation = () => {
 };
 
 export const geolocation = async () => {
-  const response = await getLocation();
-  return response;
+  try {
+    const response = await getLocation();
+    return response;
+  } catch (error) {
+    return error;
+  }
 };
