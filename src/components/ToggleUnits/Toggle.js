@@ -1,5 +1,4 @@
 import { React } from "react";
-import PropTypes from "prop-types";
 import {
   FormControl,
   FormControlLabel,
@@ -8,7 +7,6 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { experimental_sx as sx } from "@mui/system";
-import { indigo } from "@material-ui/core/colors";
 
 export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
   const handleChange = (event) => {
@@ -56,8 +54,3 @@ export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
     </FormControl>
   );
 }
-
-ToggleUnits.propTypes = {
-  currentUnit: PropTypes.func.isRequired,
-  setCurrentUnit: PropTypes.func.isRequired,
-};

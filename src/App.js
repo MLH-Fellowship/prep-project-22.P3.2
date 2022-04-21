@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import sunny from "./sunny.webp";
 import MainComponent from "./components/MainComponent/MainComponent";
 import CircularProgress from "@mui/material/CircularProgress";
+import NotificationBar from "./components/NotificationBar/NotificationBar";
 
 dotenv.config();
 
@@ -24,7 +25,7 @@ function App() {
   useEffect(() => {
     async function getLocation() {
       const locationResponse = await geolocation();
-      if (locationResponse instanceof Error) {
+      if (locationResponse instanceof Error || locationResponse === undefined) {
         setError(locationResponse);
       } else {
         setCity(locationResponse.cityName);
@@ -64,34 +65,32 @@ function App() {
       );
   }, [city]);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else {
-    return (
-      <>
-        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-        <div>
-          <h2>Enter a city below 👇</h2>
-          <SearchBar setCity={setCity} />
-
-          {isLoaded ? <div className="first-container">
+  return (
+    <>
+      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+      <div>
+        <h2>Enter a city below 👇</h2>
+        <SearchBar setCity={setCity} />
+        {error && <NotificationBar error={error} setError={setError} setCity={setCity} />}
+        {isLoaded ? (
+          <div className="first-container">
             <MainComponent
               results={results}
               currentUnit={currentUnit}
               setCurrentUnit={setCurrentUnit}
             />
             <HourlyForecast currentUnit={currentUnit} city={city} />
-          </div> : <CircularProgress size = {50} style = {{marginTop: "50px", color: "white"}} />}
-
-          
-        </div>
-
-        {results?.weather?.length && (
-          <ThingsToCarry weatherType={results.weather[0].main} />
+          </div>
+        ) : (
+          <CircularProgress size={50} style={{ marginTop: "50px", color: "white" }} />
         )}
-      </>
-    );
-  }
+      </div>
+
+      {results?.weather?.length && (
+        <ThingsToCarry weatherType={results.weather[0].main} />
+      )}
+    </>
+  );
 }
 
 export default App;
