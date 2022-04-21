@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import HourCards from "./HourCards";
 import classes from "./css/HourlyForecast.module.css";
 import LineChart from "./LineChart";
+import { CircularProgress } from "@material-ui/core";
 
 const HourlyForecast = ({ currentUnit, city }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -57,7 +58,7 @@ const HourlyForecast = ({ currentUnit, city }) => {
 
   return (
     <div className={classes.container}>
-      <h1>Hourly Forecast</h1>
+      <h3>Hourly Forecast</h3>
       {error ? (
         <div className={classes.error}>
           <h3>{error}</h3>
@@ -76,7 +77,7 @@ const HourlyForecast = ({ currentUnit, city }) => {
               <LineChart currentUnit={currentUnit} results={data} showHours={showHours} />
             </>
           ) : (
-            <h2>Loading...</h2>
+            <CircularProgress  />
           )}
         </div>
       )}

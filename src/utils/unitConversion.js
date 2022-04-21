@@ -5,10 +5,10 @@ export const tempConversion = (currentUnit, temp) => {
   }
   if (currentUnit === "fahrenheit") {
     temp = temp * (9 / 5.0) + 32;
-    return (Math.round((temp + Number.EPSILON) * 100) / 100).toString() + "°F";
+    return (Math.round((temp + Number.EPSILON) * 100) / 100).toString() + " °F";
   }
   if (currentUnit === "celsius") {
-    return (Math.round((temp + Number.EPSILON) * 100) / 100).toString() + "°C";
+    return (Math.round((temp + Number.EPSILON) * 100) / 100).toString() + " °C";
   }
 };
 
