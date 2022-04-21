@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -9,16 +9,6 @@ export default function Profile() {
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
     const navigate = useNavigate();
-
-    useEffect(
-        function () {
-            console.log(currentUser);
-            if (!currentUser) {
-
-                navigate("/login");
-            }
-        }, []
-    )
 
     async function handleLogout() {
         setError('')
