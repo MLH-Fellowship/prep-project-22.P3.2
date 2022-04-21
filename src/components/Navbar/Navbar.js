@@ -32,7 +32,7 @@ function Navbar() {
               <h2>Home</h2>
             </div>
           </a>
-          <a className="navCustom-link" href="/login">
+          <a className="navCustom-link" href="/" onClick={logout}>
             <div
               className={
                 pathName === "/logout" ? "navCustom-item nav-active" : "navCustom-item"
