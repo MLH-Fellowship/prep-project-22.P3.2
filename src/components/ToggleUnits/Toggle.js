@@ -8,7 +8,6 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { experimental_sx as sx } from "@mui/system";
-import { indigo } from "@material-ui/core/colors";
 
 export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
   const handleChange = (event) => {
