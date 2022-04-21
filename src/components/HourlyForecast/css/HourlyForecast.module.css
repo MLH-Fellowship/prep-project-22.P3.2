@@ -1,20 +1,27 @@
 .container {
-  width: 60%;
+  width: 55%;
   height: min-content;
   background-color: #fff;
   border-radius: 8px;
   padding: 10px;
-  margin: 20px auto;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
 }
 
-.container h1 {
-  color: #000;
-  margin-top: 10px;
+.container h3 {
+  top: 10px;
+  left: 25px;
+  position: relative;
+  text-align: left;
+  font-size: 25px;
+  color: #333;
   font-weight: 600;
+  margin: 0;
+  margin-bottom: 20px;
+  align-self: flex-start;
 }
 
 .contentContainer {
@@ -45,6 +52,7 @@
   height: 140px;
   width: 100px;
   background-color: #0f90fe;
+  /* background-color: #868686; */
   border-radius: 10px;
 }
 
@@ -52,10 +60,14 @@
   margin-top: 10px;
   margin-bottom: 0;
   color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .card h5 {
   margin: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .inputContainer {
@@ -76,21 +88,22 @@
   margin-left: 10px;
 }
 
-@media screen and (max-width: 900px) {
-  .container {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .container {
     width: 90%;
   }
+}
+
+@media screen and (max-width: 700px) {
   .card {
     width: 70px;
   }
 
   .card h2 {
     font-size: 18px;
+  }
+
+  .container h3 {
+    left: 15px;
   }
 }

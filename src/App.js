@@ -5,13 +5,10 @@ import ThingsToCarry from "./components/ThingsToCarry";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { geolocation } from "./api/geolocation";
 import logo from "./mlh-prep.png";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
-import Map from "./components/Map";
-import Leaflet from "leaflet";
 import dotenv from "dotenv";
 import sunny from "./sunny.webp";
-import ToggleUnits from "./components/ToggleUnits/Toggle";
-import { tempConversion } from "./utils/unitConversion";
+import MainComponent from "./components/MainComponent/MainComponent";
+import CircularProgress from "@mui/material/CircularProgress";
 
 dotenv.config();
 
@@ -76,37 +73,23 @@ function App() {
         <div>
           <h2>Enter a city below 👇</h2>
           <SearchBar setCity={setCity} />
-          <div className="Results">
-            {!isLoaded && <h2>Loading...</h2>}
-            {console.log(results)}
-            {isLoaded && results && (
-              <>
-                {/* rendering the radio btn for CtoFtoK */}
-                <div className="toggleswitch">
-                  <ToggleUnits
-                    currentUnit={currentUnit}
-                    setCurrentUnit={setCurrentUnit}
-                  />
-                </div>
-                <h2>{results.weather[0].main}</h2>
-                <h1>Feels like {tempConversion(currentUnit, results.main.feels_like)}</h1>
-                <i>
-                  <h2>
-                    {results.name}, {results.sys.country}
-                  </h2>
-                </i>
-                <Map weather={results} />
-              </>
-            )}
-          </div>
-          <HourlyForecast currentUnit={currentUnit} city={city} />
+
+          {isLoaded ? <div className="first-container">
+            <MainComponent
+              results={results}
+              currentUnit={currentUnit}
+              setCurrentUnit={setCurrentUnit}
+            />
+            <HourlyForecast currentUnit={currentUnit} city={city} />
+          </div> : <CircularProgress size = {50} style = {{marginTop: "50px", color: "white"}} />}
+
+          
         </div>
 
         {results?.weather?.length && (
           <ThingsToCarry weatherType={results.weather[0].main} />
         )}
       </>
-
     );
   }
 }
