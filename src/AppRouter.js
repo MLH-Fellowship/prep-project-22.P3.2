@@ -5,23 +5,28 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
+import Navbar from "./components/Navbar/Navbar";
+import AuthProvider from "./context/AuthContext";
 
 function AppRouter() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route
-          path="/profile"
-          element={
-            <IsPrivate>
-              <ProfilePage />
-            </IsPrivate>
-          }
-        />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/test" element={<Navbar />} />
+          <Route path="/" element={<App />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/profile"
+            element={
+              <IsPrivate>
+                <ProfilePage />
+              </IsPrivate>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
