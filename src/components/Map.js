@@ -33,8 +33,7 @@ const Map = ({ currentUnit, weather }) => {
       />
       <MapConsumer>
         {(map) => {
-          console.log("map center:", map.getCenter());
-          {
+
             map.on("click", function (e) {
               const { lat, lng } = e.latlng;
               Leaflet.marker([lat, lng], { icon }).addTo(map);
@@ -59,7 +58,6 @@ const Map = ({ currentUnit, weather }) => {
                   );
                 });
             });
-          }
           return null;
         }}
       </MapConsumer>

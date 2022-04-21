@@ -23,7 +23,7 @@ const LocationMarker = ({ weather, latLng }) => {
       animate: true,
       duration: 3,
     });
-    console.log("Fly !!!");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [latLng]);
 
   return (

@@ -1,5 +1,4 @@
 import { React } from "react";
-import PropTypes from "prop-types";
 import {
   FormControl,
   FormControlLabel,
@@ -55,8 +54,3 @@ export default function ToggleUnits({ setCurrentUnit, currentUnit }) {
     </FormControl>
   );
 }
-
-ToggleUnits.propTypes = {
-  currentUnit: PropTypes.func.isRequired,
-  setCurrentUnit: PropTypes.func.isRequired,
-};

@@ -31,7 +31,7 @@ const ThingsToCarry = ({ weatherType }) => {
           >
             {imagesOfThingsToCarry.map((image) => {
               return (
-                <div className="things-to-carry-container">
+                <div key={image.path} className="things-to-carry-container">
                   <img
                     src={image.path}
                     alt={image.name}
