@@ -1,7 +1,6 @@
 import React from "react";
 import Map from "../Map";
 import { getWeatherIcon } from "../../utils/customIcon";
-import { Icon } from "@iconify/react";
 import ToggleUnits from "../ToggleUnits/Toggle";
 
 import classes from "./css/MainComponent.module.css";
@@ -38,7 +37,7 @@ const MainComponent = ({ results, currentUnit, setCurrentUnit }) => {
                 </div>
                 <p>
                   {results.weather[0].description} in {results.name} and temperature feels
-                  like {results.main.feels_like}
+                  like {tempConversion(currentUnit, results.main.feels_like)}
                 </p>
               </div>
 
@@ -59,7 +58,7 @@ const MainComponent = ({ results, currentUnit, setCurrentUnit }) => {
             </div>
           </div>
           <div className={classes.mapContainer}>
-            <Map weather={results} />
+            <Map currentUnit={currentUnit} weather={results} />
           </div>
         </>
       )}

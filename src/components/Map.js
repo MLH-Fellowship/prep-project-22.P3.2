@@ -3,13 +3,14 @@ import { MapContainer, TileLayer, MapConsumer } from "react-leaflet";
 import Leaflet from "leaflet";
 import icon from "../utils/constants";
 import LocationMarker from "./LocationMarker";
+import { tempConversion } from "../utils/unitConversion";
 require("dotenv").config();
 
 var popup = Leaflet.popup();
 
 // function onMapClick(e) {}
 
-const Map = ({ weather }) => {
+const Map = ({ currentUnit, weather }) => {
   const [latLng, setLatLng] = useState([19.0144, 72.8479]); // default location of map
 
   useEffect(() => {
@@ -32,8 +33,7 @@ const Map = ({ weather }) => {
       />
       <MapConsumer>
         {(map) => {
-          console.log("map center:", map.getCenter());
-          {
+
             map.on("click", function (e) {
               const { lat, lng } = e.latlng;
               Leaflet.marker([lat, lng], { icon }).addTo(map);
@@ -44,7 +44,7 @@ const Map = ({ weather }) => {
                   e.latlng.lat +
                   "&lon=" +
                   e.latlng.lng +
-                  "&appid=" +
+                  "&units=metric&appid=" +
                   process.env.REACT_APP_APIKEY
               )
                 .then((r) => r.json())
@@ -54,12 +54,10 @@ const Map = ({ weather }) => {
                   popup.setContent(
                     data.weather.map((w) => w.description).join(", ") +
                       " " +
-                      data.main.temp +
-                      "°C"
+                      tempConversion(currentUnit, data.main.temp)
                   );
                 });
             });
-          }
           return null;
         }}
       </MapConsumer>
