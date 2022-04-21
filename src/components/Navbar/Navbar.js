@@ -1,74 +1,95 @@
-import { useAuth } from '../../context/AuthContext'
-
-
+import { useLocation } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import "./Navbar.css";
 
 function Navbar() {
-    const { currentUser } = useAuth();
-    const { logout } = useAuth()
+  const { currentUser } = useAuth();
+  const { logout } = useAuth();
+  let location = useLocation();
+  let pathName = location.pathname;
 
+  return currentUser ? (
+    <>
+      <nav class="navbarCustom">
+        <a className="navCustomLogo" href="/">
+          WeatherApp
+        </a>
 
-    return currentUser ? (
+        <input className="checkbox" type="checkbox" name="" id="" />
+        <div className="hamburger-lines">
+          <span className="line line1"></span>
+          <span className="line line2"></span>
+          <span className="line line3"></span>
+        </div>
 
+        <div className="main-container">
+          <a className="navCustom-link" href="/">
+            <div
+              className={
+                pathName === "/" ? "navCustom-item nav-active" : "navCustom-item"
+              }
+            >
+              <h2>Home</h2>
+            </div>
+          </a>
+          <a className="navCustom-link" href="/login">
+            <div
+              className={
+                pathName === "/logout" ? "navCustom-item nav-active" : "navCustom-item"
+              }
+            >
+              <h2>Logout</h2>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </>
+  ) : (
+    <>
+      <nav class="navbarCustom">
+        <a className="navCustomLogo" href="/">
+          WeatherApp
+        </a>
 
-        <>
+        <input className="checkbox" type="checkbox" name="" id="" />
+        <div className="hamburger-lines">
+          <span className="line line1"></span>
+          <span className="line line2"></span>
+          <span className="line line3"></span>
+        </div>
 
-            <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong d-flex align-items-end ">
-
-                <div class="container-fluid">
-
-                    <a class="navbar-brand" href="/">WeatherApp</a>
-
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="/login" onClick={logout}>LogOut</a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </nav>
-
-        </>) : (
-
-        <>
-
-            <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong d-flex align-items-end ">
-
-                <div class="container-fluid">
-
-                    <a class="navbar-brand" href="/">WeatherApp</a>
-
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/login">Log In</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/signup">Sign up!</a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </nav>
-
-        </>
-    );
+        <div className="main-container">
+          <a className="navCustom-link" href="/">
+            <div
+              className={
+                pathName === "/" ? "navCustom-item nav-active" : "navCustom-item"
+              }
+            >
+              <h2>Home</h2>
+            </div>
+          </a>
+          <a className="navCustom-link" href="/login">
+            <div
+              className={
+                pathName === "/login" ? "navCustom-item nav-active" : "navCustom-item"
+              }
+            >
+              <h2>LogIn</h2>
+            </div>
+          </a>
+          <a className="navCustom-link" href="/signUp">
+            <div
+              className={
+                pathName === "/signUp" ? "navCustom-item nav-active" : "navCustom-item"
+              }
+            >
+              <h2>SignUp</h2>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </>
+  );
 }
 
 export default Navbar;
