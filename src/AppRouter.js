@@ -8,20 +8,25 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import AuthProvider from "./context/AuthContext";
 
 function AppRouter() {
-    return (
-        <>
-            <AuthProvider>
-                <Routes>
-
-                    <Route path="/" element={<App />} />
-                    <Route path="/signup" element={<SignupPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
-
-                </Routes>
-            </AuthProvider>
-        </>
-    );
+  return (
+    <>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/profile"
+            element={
+              <IsPrivate>
+                <ProfilePage />
+              </IsPrivate>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </>
+  );
 }
 
 export default AppRouter;
