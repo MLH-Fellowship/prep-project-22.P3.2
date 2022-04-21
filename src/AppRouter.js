@@ -13,7 +13,6 @@ function AppRouter() {
     <>
       <AuthProvider>
         <Routes>
-          <Route path="/test" element={<Navbar />} />
           <Route path="/" element={<App />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
